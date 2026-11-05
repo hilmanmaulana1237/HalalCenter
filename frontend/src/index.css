@@ -1,8 +1,4 @@
-/* Import Template CSS */
-@import './styles/bootstrap.min.css';
-@import './styles/splide.min.css';
-@import './styles/leaflet.min.css';
-@import './styles/template-theme.css';
+/* Template CSS is imported directly in main.tsx */
 
 /* Global resets keeping template typography */
 body {

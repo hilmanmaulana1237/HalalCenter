@@ -58,16 +58,14 @@ export const Navbar: React.FC = () => {
           <img
             alt="Logo LPH UIN SGD"
             className="img-fluid header-logo entered lazyloaded"
-            height="44"
-            src="/assets/images/beranda_000.png"
-            width="98"
+            src="/assets/images/uin_sgd/logo_lph_uin_sgd.webp"
+            style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
           />
           <img
             alt="Logo LPH UIN SGD"
             className="img-fluid header-logo-white"
-            height="44"
-            src="/assets/images/beranda_002.png"
-            width="98"
+            src="/assets/images/uin_sgd/logo_lph_uin_sgd.webp"
+            style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
           />
         </Link>
         

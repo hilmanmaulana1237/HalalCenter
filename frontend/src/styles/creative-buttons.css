@@ -1,0 +1,280 @@
+/* ==========================================================================
+   HALAL CENTER UIN SUNAN GUNUNG DJATI - THEME-MATCHED SERVICES & LEADERSHIP
+   Cohesive with LPH LPPOM Theme (Palette: #1874A5, #289ACF, #66AB37, #7EC34B)
+   ========================================================================== */
+
+/* === 1. SERVICES GRID (8 LAYANAN UNGGULAN) === */
+.services-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1280px;
+  margin: 36px auto 0;
+  padding: 0 15px;
+}
+
+@media (max-width: 1199px) {
+  .services-theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-theme-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.service-theme-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 84px !important;
+  padding: 16px 20px !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(24, 116, 165, 0.14) !important;
+  border-left: 5px solid #66AB37 !important;
+  border-radius: 12px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(3, 7, 18, 0.05) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.service-theme-card:hover {
+  background: linear-gradient(135deg, #1874A5 0%, #289ACF 100%) !important;
+  border-color: #1874A5 !important;
+  border-left-color: #7EC34B !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 28px rgba(24, 116, 165, 0.24) !important;
+}
+
+.service-theme-card .card-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  text-align: left !important;
+  flex: 1 !important;
+}
+
+.service-theme-card .icon-bubble {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 10px !important;
+  background: #F2F9FD !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.service-theme-card .icon-bubble svg {
+  width: 22px !important;
+  height: 22px !important;
+  fill: #1874A5 !important;
+  transition: fill 0.3s ease !important;
+}
+
+.service-theme-card:hover .icon-bubble {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+.service-theme-card:hover .icon-bubble svg {
+  fill: #ffffff !important;
+}
+
+.service-theme-card .service-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  color: #111827 !important;
+  transition: color 0.3s ease !important;
+}
+
+.service-theme-card:hover .service-title {
+  color: #ffffff !important;
+}
+
+.service-theme-card .arrow-indicator {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  flex-shrink: 0 !important;
+  margin-left: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.service-theme-card .arrow-indicator svg {
+  width: 14px !important;
+  height: 14px !important;
+  fill: #1874A5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.service-theme-card:hover .arrow-indicator {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateX(3px) !important;
+}
+
+.service-theme-card:hover .arrow-indicator svg {
+  fill: #ffffff !important;
+}
+
+/* === 2. LEADERSHIP SPOTLIGHT (DR. TRI CAHYANTO) === */
+.director-spotlight-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(24, 116, 165, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(3, 7, 18, 0.06);
+  padding: 36px 40px;
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .director-spotlight-card {
+    padding: 24px 20px;
+  }
+}
+
+.director-spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1874A5 0%, #66AB37 100%);
+}
+
+.director-spotlight-wrap {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+@media (max-width: 991px) {
+  .director-spotlight-wrap {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.director-spotlight-photo {
+  flex: 0 0 240px;
+  display: flex;
+  justify-content: center;
+}
+
+.director-spotlight-photo img {
+  max-height: 280px;
+  width: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.director-spotlight-info {
+  flex: 1;
+}
+
+.director-spotlight-info .badge-role {
+  display: inline-block;
+  background: #EBF5FB;
+  color: #1874A5;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.director-spotlight-info .director-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.director-spotlight-info .director-quote {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4B5563;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 3px solid #66AB37;
+}
+
+@media (max-width: 991px) {
+  .director-spotlight-info .director-quote {
+    text-align: left;
+  }
+}
+
+.director-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .director-details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.director-details-col h5 {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1874A5;
+  margin-bottom: 10px;
+}
+
+.director-details-col ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.director-details-col ul li {
+  list-style: disc;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin-bottom: 6px;
+}
+
+/* === 3. MODAL DIRECTOR IMAGE FIX === */
+#modalDirector .modal-dialog .modal-content .modal-body-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modalDirector .modal-dialog .modal-content .modal-body-left img {
+  max-height: 520px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin-top: 0 !important;
+  display: block !important;
+}

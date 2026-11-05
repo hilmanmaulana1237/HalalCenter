@@ -4,8 +4,135 @@ import Splide from '@splidejs/splide';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+interface Director {
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+  quote?: string;
+  education: string[];
+  experience: string[];
+}
+
+const DIRECTORS: Director[] = [
+  {
+    id: 1,
+    name: 'Prof. Dr. H. Rosihon Anwar, M.Ag.',
+    position: 'Rektor UIN SGD Bandung / Dewan Pembina Halal Center',
+    image: '/assets/images/uin_sgd/director_rosihon.webp',
+    quote: 'UIN Sunan Gunung Djati Bandung mendedikasikan seluruh potensi akademik, riset sains halal, dan laboratorium untuk mengakselerasi ekosistem industri halal global yang kredibel dan maslahat.',
+    education: [
+      'Guru Besar Ilmu Al-Qur\'an dan Tafsir UIN Sunan Gunung Djati Bandung',
+      'Doktor (S3) Studi Islam / Tafsir Hadis Pascasarjana UIN SGD Bandung',
+      'Magister Agama (S2) Pemikiran Islam UIN SGD Bandung',
+      'Sarjana Agama (S1) Fakultas Ushuluddin UIN SGD Bandung'
+    ],
+    experience: [
+      'Rektor UIN Sunan Gunung Djati Bandung (2023 - Sekarang)',
+      'Inisiator & Pengarah Utama Paradigma "Halalsphere University"',
+      'Dewan Pembina LPH dan LP3H Halal Center UIN Sunan Gunung Djati',
+      'Wakil Rektor Bidang Akademik UIN Sunan Gunung Djati Bandung (2019 - 2023)'
+    ]
+  },
+  {
+    id: 2,
+    name: 'Dr. Tri Cahyanto, M.Si.',
+    position: 'Kepala Halal Center UIN SGD',
+    image: '/assets/images/uin_sgd/director_tri.webp',
+    quote: 'LPH dan LP3H Halal Center UIN SGD berkomitmen memberikan pelayanan prima, cepat, akuntabel, dan berbasis integritas syar\'i serta pengujian laboratorium yang presisi demi melindungi hak konsumen muslim.',
+    education: [
+      'Doktor (S3) Ilmu Biologi & Sains Hayati Terapan',
+      'Magister Sains (S2) Biologi Konservasi & Autentikasi Produk',
+      'Pelatihan & Sertifikasi Lead Auditor Halal Berlisensi BPJPH & MUI',
+      'Sertifikasi Kompetensi Asesor Pengawas Jaminan Produk Halal'
+    ],
+    experience: [
+      'Kepala Pusat Kajian Halal (Halal Center) UIN SGD Bandung',
+      'Pimpinan Teknis Operasional LPH UIN Sunan Gunung Djati Bandung',
+      'Koordinator Nasional Lembaga Pendamping PPH (LP3H) UIN SGD',
+      'Dosen & Peneliti Laboratorium Pengujian Autentikasi Kehalalan Hayati'
+    ]
+  }
+];
+
+const UIN_SERVICES = [
+  {
+    title: 'Sertifikasi Halal Self Declare',
+    url: 'https://halal.uinsgd.ac.id/sertifikasi-halal-self-declare/',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Sertifikasi Halal Reguler',
+    url: 'https://lph.uinsgd.ac.id/',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M128.3 160v32h32v-32zm64-96h-32v32h32zm-64 32v32h32V96zm64 32h-32v32h32zm177.6-30.1L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM256 51.9l76.1 76.1H256zM336 464H48V48h79.7v16h32V48H208v104c0 13.3 10.7 24 24 24h104zM194.2 265.7c-1.1-5.6-6-9.7-11.8-9.7h-22.1v-32h-32v32l-19.7 97.1C102 385.6 126.8 416 160 416c33.1 0 57.9-30.2 51.5-62.6zm-33.9 124.4c-17.9 0-32.4-12.1-32.4-27s14.5-27 32.4-27 32.4 12.1 32.4 27-14.5 27-32.4 27zm32-198.1h-32v32h32z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Konsultasi Sertifikasi',
+    url: 'https://api.whatsapp.com/send?phone=6282118201232',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Publikasi Artikel Halal',
+    url: 'https://journal.uinsgd.ac.id/index.php/ijhar',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.26 7.89-7.26 13.29v367.62c0 10.23 10.68 16.65 19.54 11.5 64.7-37.58 167.76-47.58 223.1-50.53 7.82-.42 13.36-6.84 13.36-14.67V46.66c0-8.32-7.01-14.89-17.78-14.61zM33.78 32.05c54.8 3.11 163.72 14.43 230.96 55.59 4.64 2.84 7.26 7.89 7.26 13.29v367.62c0 10.23-10.68 16.65-19.54 11.5-64.7-37.58-167.76-47.58-223.1-50.53-7.82-.42-13.36-6.84-13.36-14.67V46.66c0-8.32 7.01-14.89 17.78-14.61z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Lembaga Pendamping PPH',
+    url: 'https://halal.uinsgd.ac.id/lembaga-pendamping-proses-produk-halal-lp3h',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Lembaga Pelatihan JPH',
+    url: 'https://halal.uinsgd.ac.id/lembaga-pelatihan-jaminan-produk-halal-jph/',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Akademi Juru Sembelih Halal',
+    url: 'https://halal.uinsgd.ac.id/akademi-juru-sembelih-halal-juleha/',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4zm323-128.4l-27.8-28.1c-4.6-4.7-12.1-4.7-16.8-.1l-104.8 104-45.5-45.8c-4.6-4.7-12.1-4.7-16.8-.1l-28.1 27.9c-4.7 4.6-4.7 12.1-.1 16.8l81.7 82.3c4.6 4.7 12.1 4.7 16.8.1l141.3-140.2c4.6-4.7 4.7-12.2.1-16.8z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Laboratorium Pengujian Halal',
+    url: 'https://halal.uinsgd.ac.id//laboratorium-pengujian-halal/',
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M128 148v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12zm140 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-128 96h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm128 0h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-76 84v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm76 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm180 124v36H0v-36c0-6.6 5.4-12 12-12h19.5V24c0-13.3 10.7-24 24-24h337c13.3 0 24 10.7 24 24v440H436c6.6 0 12 5.4 12 12zM79.5 463H192v-67c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v67h112.5V49L80 48l-.5 415z" />
+      </svg>
+    )
+  }
+];
+
 export const HomePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'artikel' | 'jurnal' | 'umk' | 'fatwa'>('artikel');
+  const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
 
   useEffect(() => {
     // 1. Hero Video Autoplay with muted guarantee
@@ -318,7 +445,7 @@ export const HomePage: React.FC = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-5">
-                <img alt="Kepala Halal Center UIN SGD" className="img-fluid entered lazyloaded" src="/assets/images/uin_sgd/uin_13.webp" style={{ borderRadius: '16px', maxHeight: '460px', width: 'auto', objectFit: 'cover' }} />
+                <img alt="Certificate Akreditasi LPH UIN SGD" className="img-fluid entered lazyloaded" src="/assets/images/certificate.png" />
               </div>
               <div className="col-lg-7">
                 <div className="wrap-text">
@@ -412,87 +539,45 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* 4. PRODUCT SCOPES SECTION (EXACT TEMPLATE MARKUP) */}
+        {/* 4. THEME-MATCHED SERVICES SECTION (8 LAYANAN UNGGULAN UIN SGD) */}
         <section className="product" id="products">
           <div className="container">
             <div className="product-header">
               <div className="row align-items-center">
                 <div className="col-md-12 mb-2">
                   <div className="text-center">
-                    <div className="badge badge-green">JENIS PRODUK HALAL</div>
+                    <div className="badge badge-green">LAYANAN HALAL TERPADU</div>
                     <h2 className="heading heading-dark heading-medium">
-                      <em>Jenis Produk Wajib Sertifikasi Halal</em>
-                      <br /> (KMA 748 Tahun 2021)
+                      <em>Layanan Unggulan &amp; Sertifikasi</em><br /> Halal Center UIN Sunan Gunung Djati
                     </h2>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="product-content">
-              <div className="wrap">
-                <div className="col">
-                  <i className="custom-icon icon-food"></i>
-                  <h6>Makanan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-drink"></i>
-                  <h6>Minuman</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-kimia"></i>
-                  <h6>Produk Kimia</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-biologi"></i>
-                  <h6>Produk Biologi</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-gmo"></i>
-                  <h6>GMO</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-kosmetik"></i>
-                  <h6>Kosmetik</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-obat"></i>
-                  <h6>Obat</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-barang"></i>
-                  <h6>Barang Gunaan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-jasa-penyembelihan"></i>
-                  <h6>Jasa Penyembelihan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-distribusi"></i>
-                  <h6>Jasa Distribusi</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-penyajian"></i>
-                  <h6>Jasa Penyajian</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-penyimpanan"></i>
-                  <h6>Jasa Penyimpanan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-pengemasan"></i>
-                  <h6>Jasa Pengemasan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-pengolahan"></i>
-                  <h6>Jasa Pengolahan</h6>
-                </div>
-                <div className="col">
-                  <i className="custom-icon icon-penjualan"></i>
-                  <h6>Jasa Penjualan</h6>
-                </div>
-              </div>
+
+            <div className="services-theme-grid">
+              {UIN_SERVICES.map((srv, idx) => (
+                <a
+                  key={idx}
+                  href={srv.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="service-theme-card"
+                >
+                  <div className="card-content">
+                    <div className="icon-bubble">{srv.icon}</div>
+                    <span className="service-title">{srv.title}</span>
+                  </div>
+                  <div className="arrow-indicator">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="#1874A5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    </svg>
+                  </div>
+                </a>
+              ))}
             </div>
-            <div className="divider">
+
+            <div className="divider mt-5">
               <div className="divider-box box-primary-500 rounded-1"></div>
               <div className="divider-box box-primary-600"></div>
               <div className="divider-box box-primary-400"></div>
@@ -502,6 +587,164 @@ export const HomePage: React.FC = () => {
               <div className="divider-box box-secondary-600 rounded-1"></div>
             </div>
           </div>
+        </section>
+
+        {/* 5. LEADERSHIP BOARD SECTION (DR. TRI CAHYANTO & PIMPINAN) */}
+        <section className="board-of-director" id="leadership" style={{ padding: '80px 0 60px' }}>
+          <div className="container">
+            <div className="board-of-director-header">
+              <div className="row align-items-center">
+                <div className="col-md-12 mb-2">
+                  <div className="text-center">
+                    <div className="badge badge-green mb-2">Pimpinan Halal Center UIN Sunan Gunung Djati</div>
+                    <h2 className="heading heading-dark heading-medium">
+                      <em>Kepemimpinan Berintegritas Syar'i</em> &amp; Keunggulan Saintifik
+                    </h2>
+                    <p className="text-muted mt-2">Komitmen Pengabdian, Tata Kelola Profesional, dan Standar Mutu Laboratorium</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="board-of-director-content">
+              <div className="row justify-content-center">
+                {DIRECTORS.map((director) => (
+                  <div className="col-lg-4 col-md-6 mb-4" key={director.id}>
+                    <div className="box-director">
+                      <img
+                        alt={director.name}
+                        className="img-fluid box-director-img entered lazyloaded"
+                        src={director.image}
+                        style={{ objectFit: 'contain', width: '100%', height: '100%', maxHeight: '420px', padding: '10px 0' }}
+                      />
+                      <div className="box-director-flip">
+                        <div className="box-director-flip-front">
+                          <p className="position">{director.position}</p>
+                          <h4 className="name">{director.name}</h4>
+                        </div>
+                        <div className="box-director-flip-back">
+                          <button
+                            className="btn btn-text btn-show-detail"
+                            type="button"
+                            onClick={() => setSelectedDirector(director)}
+                          >
+                            Lihat Detail <i className="custom-icon icon-arrow-right"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Featured Dr. Tri Cahyanto Spotlight Profile */}
+            <div className="director-spotlight-card">
+              <div className="director-spotlight-wrap">
+                <div className="director-spotlight-photo">
+                  <img
+                    src="/assets/images/uin_sgd/director_tri.webp"
+                    alt="Dr. Tri Cahyanto, M.Si."
+                  />
+                </div>
+                <div className="director-spotlight-info">
+                  <span className="badge-role">Kepala Halal Center UIN SGD</span>
+                  <h3 className="director-title">Dr. Tri Cahyanto, M.Si.</h3>
+                  <p className="director-quote">
+                    "LPH dan LP3H Halal Center UIN SGD berkomitmen memberikan pelayanan prima, cepat, akuntabel, dan berbasis integritas syar'i serta pengujian laboratorium yang presisi demi melindungi hak konsumen muslim."
+                  </p>
+                  <div className="director-details-grid">
+                    <div className="director-details-col">
+                      <h5>Edukasi &amp; Jabatan</h5>
+                      <ul>
+                        <li>Doktor (S3) Ilmu Biologi &amp; Sains Hayati Terapan</li>
+                        <li>Magister Sains (S2) Biologi Konservasi &amp; Autentikasi Produk</li>
+                        <li>Pelatihan &amp; Sertifikasi Lead Auditor Halal Berlisensi BPJPH &amp; MUI</li>
+                        <li>Sertifikasi Kompetensi Asesor Pengawas Jaminan Produk Halal</li>
+                      </ul>
+                    </div>
+                    <div className="director-details-col">
+                      <h5>Pengalaman &amp; Fokus</h5>
+                      <ul>
+                        <li>Kepala Pusat Kajian Halal (Halal Center) UIN SGD Bandung</li>
+                        <li>Pimpinan Teknis Operasional LPH UIN Sunan Gunung Djati Bandung</li>
+                        <li>Koordinator Nasional Lembaga Pendamping PPH (LP3H) UIN SGD</li>
+                        <li>Dosen &amp; Peneliti Laboratorium Pengujian Autentikasi Kehalalan Hayati</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Director Detail */}
+          {selectedDirector && (
+            <div
+              aria-modal="true"
+              className="modal fade show"
+              id="modalDirector"
+              role="dialog"
+              style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.6)', zIndex: 1050 }}
+            >
+              <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content" style={{ overflow: 'hidden', borderRadius: '20px' }}>
+                  <div className="modal-body">
+                    <button
+                      aria-label="Close"
+                      className="close"
+                      type="button"
+                      onClick={() => setSelectedDirector(null)}
+                    >
+                      <svg fill="none" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M20.4246 10.4258C20.7422 10.1084 21.2565 10.1083 21.574 10.4258C21.8915 10.7433 21.8915 11.2577 21.574 11.5753L17.1492 16.0001L21.574 20.4249C21.8915 20.7424 21.8915 21.2568 21.574 21.5743C21.2565 21.8918 20.7422 21.8917 20.4246 21.5743L15.9998 17.1495L11.575 21.5743C11.2575 21.8917 10.7431 21.8918 10.4256 21.5743C10.1081 21.2568 10.1082 20.7424 10.4256 20.4249L14.8504 16.0001L10.4256 11.5753C10.1082 11.2577 10.1081 10.7433 10.4256 10.4258C10.7431 10.1083 11.2575 10.1084 11.575 10.4258L15.9998 14.8506L20.4246 10.4258Z"
+                          fill="#6B7280"
+                        ></path>
+                      </svg>
+                    </button>
+                    <div className="modal-body-wrap">
+                      <div className="modal-body-left">
+                        <img
+                          alt={selectedDirector.name}
+                          className="img-fluid"
+                          id="director-img"
+                          src={selectedDirector.image}
+                        />
+                      </div>
+                      <div className="modal-body-right">
+                        <div className="intro">
+                          <p className="position" id="director-position">{selectedDirector.position}</p>
+                          <h3 className="name" id="director-name">{selectedDirector.name}</h3>
+                          {selectedDirector.quote && (
+                            <p className="mt-2 text-muted" style={{ fontStyle: 'italic', fontSize: '13px', lineHeight: '1.6' }}>
+                              "{selectedDirector.quote}"
+                            </p>
+                          )}
+                        </div>
+                        <div className="item-list education">
+                          <h5>Edukasi &amp; Jabatan</h5>
+                          <ul id="director-education">
+                            {selectedDirector.education.map((edu, idx) => (
+                              <li key={idx}>{edu}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="item-list experience">
+                          <h5>Pengalaman &amp; Fokus</h5>
+                          <ul id="director-experience">
+                            {selectedDirector.experience.map((exp, idx) => (
+                              <li key={idx}>{exp}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </section>
 
         {/* 5. NEWS & UPDATE SECTION (EXACT TEMPLATE MARKUP WITH WORKING TABS) */}

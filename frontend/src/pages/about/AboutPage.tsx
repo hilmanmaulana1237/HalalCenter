@@ -16,8 +16,8 @@ const DIRECTORS: Director[] = [
   {
     id: 1,
     name: 'Prof. Dr. H. Rosihon Anwar, M.Ag',
-    position: 'Rektor UIN SGD Bandung / Dewan Pembina Halal Center',
-    image: '/assets/images/uin_sgd/uin_12.webp',
+    position: 'Rektor UIN SGD / Dewan Pembina',
+    image: '/assets/images/uin_sgd/director_rosihon.webp',
     quote: 'Atas capaian yang membanggakan kampus ini, kami mengucapkan terima kasih atas segala kepercayaan masyarakat untuk dapat mengajukan sertifikasi halal baik melalui jalur self declare maupun jalur reguler di LPH UIN Sunan Gunung Djati Bandung.',
     education: [
       'Guru Besar Ilmu Tafsir UIN Sunan Gunung Djati Bandung',
@@ -35,8 +35,8 @@ const DIRECTORS: Director[] = [
   {
     id: 2,
     name: 'Dr. Tri Cahyanto, M.Si.',
-    position: 'Kepala Pusat Kajian Halal (Halal Center) UIN Sunan Gunung Djati',
-    image: '/assets/images/uin_sgd/uin_13.webp',
+    position: 'Kepala Halal Center UIN SGD',
+    image: '/assets/images/uin_sgd/director_tri.webp',
     quote: 'LPH dan LP3H Halal Center UIN SGD berkomitmen memberikan pelayanan prima, cepat, akuntabel, dan berbasis integritas syar\'i serta pengujian laboratorium yang presisi demi melindungi hak konsumen muslim.',
     education: [
       'Doktor (S3) Ilmu Biologi & Sains Hayati Terapan',
@@ -138,7 +138,7 @@ export const AboutPage: React.FC = () => {
                 <div className="col-md-12 mb-2">
                   <div className="text-center">
                     <h2 className="heading heading-dark heading-medium">
-                      <em>Pimpinan Halal Center UIN Sunan Gunung Djati</em>
+                      Pimpinan <em>Halal Center</em> UIN Sunan Gunung Djati
                     </h2>
                     <p className="text-muted mt-2">Komitmen Kepemimpinan Berintegritas Syar'i &amp; Keunggulan Saintifik</p>
                   </div>
@@ -154,6 +154,7 @@ export const AboutPage: React.FC = () => {
                         alt={director.name}
                         className="img-fluid box-director-img entered lazyloaded"
                         src={director.image}
+                        style={{ objectFit: 'contain', width: '100%', height: '100%', maxHeight: '420px', padding: '10px 0' }}
                       />
                       <div className="box-director-flip">
                         <div className="box-director-flip-front">
@@ -187,7 +188,7 @@ export const AboutPage: React.FC = () => {
               style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
             >
               <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content">
+                <div className="modal-content" style={{ overflow: 'hidden', borderRadius: '20px' }}>
                   <div className="modal-body">
                     <button
                       aria-label="Close"
@@ -203,12 +204,13 @@ export const AboutPage: React.FC = () => {
                       </svg>
                     </button>
                     <div className="modal-body-wrap">
-                      <div className="modal-body-left">
+                      <div className="modal-body-left" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <img
                           alt={selectedDirector.name}
                           className="img-fluid"
                           id="director-img"
                           src={selectedDirector.image}
+                          style={{ maxHeight: '520px', width: 'auto', height: 'auto', objectFit: 'contain', marginTop: 0, display: 'block' }}
                         />
                       </div>
                       <div className="modal-body-right">
@@ -271,11 +273,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-1989"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2018</h2>
                           <p>
@@ -291,11 +288,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-1994"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2021</h2>
                           <p>
@@ -311,11 +303,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-1995"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2022</h2>
                           <p>
@@ -331,11 +318,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-2011"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2023</h2>
                           <p>
@@ -351,11 +333,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-2012"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2024</h2>
                           <p>
@@ -371,11 +348,6 @@ export const AboutPage: React.FC = () => {
                         <div className="dots"></div>
                       </div>
                       <div className="content align-items-center">
-                        <div className="content-left">
-                          <div className="icon-wrap">
-                            <i className="icon icon-2024"></i>
-                          </div>
-                        </div>
                         <div className="content-right">
                           <h2 className="year">2026</h2>
                           <p>
