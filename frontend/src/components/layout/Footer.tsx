@@ -1,69 +1,97 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
-    <footer  className="footer">
-    <div className="footer-menu">
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-4 mb-4">
-                    <a href="#">
-                        <img src="/assets/images/img_037.png" alt="Logo Lab LPH UIN SGD" className="img-fluid footer-logo entered lazyloaded"   />                    </a>
-                    <div>
-                        <a href="/layanan/kalkulator-harga" className="btn btn-style2 btn-icon btn-style4"><i className="custom-icon icon-search"></i>Cek Estimasi Tarif LPH UIN</a>
-                    </div>
-                    <div className="social-media">
-                        <a href="https://www.instagram.com/lppom_mui/" target="_blank" aria-label="Instagram" className="social-media-item"><i className="custom-icon icon-instagram"></i></a>
-                        <a href="https://www.facebook.com/halalindonesia/" target="_blank" aria-label="Facebook" className="social-media-item"><i className="custom-icon icon-facebook"></i></a>
-                        <a href="https://id.linkedin.com/company/lppommui-official" target="_blank" aria-label="Linkedin" className="social-media-item"><i className="custom-icon icon-linkedin"></i></a>
-                        <a href="https://www.youtube.com/@HalalIndonesia" target="_blank" aria-label="Youtube" className="social-media-item"><i className="custom-icon icon-youtube"></i></a>
-                        <a href="https://x.com/lppom_mui" target="_blank" aria-label="X" className="social-media-item"><i className="custom-icon icon-x"></i></a>
-                        <a href="https://www.tiktok.com/@lppom_mui" target="_blank" aria-label="Tiktok" className="social-media-item"><i className="custom-icon icon-tiktok"></i></a>
-                    </div>
-                </div>
-
-                
-                <div className="col-md-2 mb-4">
-                    <h5 className="heading-menu">Jelajahi</h5>
-                    <ul className="list-unstyled menu-list">
-                        <ul className="list-unstyled menu-list"><li id="menu-item-323" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-7 current_page_item menu-item-323"><a href="/" aria-current="page">Beranda</a></li>
-<li id="menu-item-325" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-325"><a href="/tentang-lph">Tentang Kami</a></li>
-<li id="menu-item-326" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-326"><a href="/layanan/kalkulator-harga">Layanan</a></li>
-<li id="menu-item-327" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-327"><a href="/berita">Berita</a></li>
-<li id="menu-item-328" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-328"><a href="/ruang-umk">Pojok UMK</a></li>
-<li id="menu-item-324" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-324"><a href="/layanan/qna">FAQ</a></li>
-<li id="menu-item-329" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-329"><a href="/category/fatwa-regulasi/fatwa-mui">Fatwa MUI</a></li>
-<li id="menu-item-330" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-330"><a href="/category/fatwa-regulasi/regulasi">Regulasi</a></li>
-<li id="menu-item-33146" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-33146"><a rel="privacy-policy" href="https://halalmui.org/kebijakan-privasi/">Kebijakan Privasi</a></li>
-</ul>                    </ul>
-                </div>
-
-                
-                <div className="col-md-3 mb-4">
-                    <h5 className="heading-menu">Layanan Kami</h5>
-                    <ul className="list-unstyled menu-list">
-                        <ul className="list-unstyled menu-list"><li id="menu-item-332" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-332"><a href="https://halalmui.org/layanan-lppom/pemeriksaan-kehalalan-produk/">Pemeriksaan Kehalalan Produk</a></li>
-<li id="menu-item-33815" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-33815"><a href="https://halalmui.org/layanan-lppom/uji-laboratorium/">Uji Laboratorium</a></li>
-</ul>                    </ul>
-                </div>
-
-                
-                <div className="col-md-3 mb-4">
-                    <h5 className="heading-menu">Kontak</h5>
-                    <ul className="list-unstyled menu-list">
-                        <li><i className="custom-icon icon-phone"></i>Call Center: <a href="tel:14056" aria-label="Call Center">14056</a></li>
-                        <li><i className="custom-icon icon-email"></i><a href="mailto:customercare@halalmui.org" aria-label="Email">customercare@halalmui.org</a></li>
-                        <li><i className="custom-icon icon-web"></i><a href="/" target="_blank" aria-label="Website">halalmui.org</a></li>
-                    </ul>
-                </div>
+    <footer className="footer">
+      <div className="footer-menu py-5">
+        <div className="container-fluid px-lg-5">
+          <div className="row">
+            {/* Column 1: Info & Call to Action */}
+            <div className="col-lg-4 col-md-6 mb-4">
+              <Link to="/">
+                <img
+                  src="/assets/images/uin_sgd/uin_00.webp"
+                  alt="Logo Halal Center UIN SGD Bandung"
+                  className="img-fluid footer-logo entered lazyloaded mb-3"
+                  style={{ maxHeight: '65px', objectFit: 'contain' }}
+                />
+              </Link>
+              <p className="text-muted small pr-lg-4" style={{ lineHeight: '1.6' }}>
+                Pusat Halal (Halal Center) UIN Sunan Gunung Djati Bandung melalui visi <strong>"Halalsphere University"</strong> mengintegrasikan riset multidisiplin, pemeriksaan halal reguler (LPH), pendampingan UMK (LP3H), laboratorium terpadu, dan pelatihan kompetensi SDM halal.
+              </p>
+              <div className="mt-3">
+                <Link to="/layanan/kalkulator-harga" className="btn btn-style2 btn-icon btn-style4 btn-sm">
+                  <i className="custom-icon icon-search"></i> Hitung Estimasi Tarif LPH
+                </Link>
+              </div>
             </div>
+
+            {/* Column 2: Jelajahi */}
+            <div className="col-lg-2 col-md-6 mb-4">
+              <h5 className="heading-menu font-weight-bold mb-3" style={{ color: '#005a36' }}>Jelajahi</h5>
+              <ul className="list-unstyled menu-list">
+                <li className="mb-2"><Link to="/">Beranda</Link></li>
+                <li className="mb-2"><Link to="/tentang">Tentang Kami</Link></li>
+                <li className="mb-2"><Link to="/layanan/kalkulator-harga">Kalkulator Tarif</Link></li>
+                <li className="mb-2"><Link to="/berita">Berita &amp; Artikel</Link></li>
+                <li className="mb-2"><Link to="/layanan/qna">Pusat Bantuan (FAQ)</Link></li>
+                <li className="mb-2"><Link to="/kontak">Hubungi Kami</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Layanan Kami */}
+            <div className="col-lg-3 col-md-6 mb-4">
+              <h5 className="heading-menu font-weight-bold mb-3" style={{ color: '#005a36' }}>Unit Layanan</h5>
+              <ul className="list-unstyled menu-list">
+                <li className="mb-2"><Link to="/tentang#services">Lembaga Pemeriksa Halal (LPH)</Link></li>
+                <li className="mb-2"><Link to="/tentang#services">Lembaga Pendamping PPH (LP3H)</Link></li>
+                <li className="mb-2"><Link to="/tentang#services">Laboratorium Pengujian &amp; Kalibrasi</Link></li>
+                <li className="mb-2"><Link to="/tentang#services">Lembaga Pelatihan JPH (LPJPH)</Link></li>
+                <li className="mb-2"><Link to="/tentang#services">Akademi Juru Sembelih Halal (JULEHA)</Link></li>
+                <li className="mb-2"><a href="https://journal.uinsgd.ac.id/index.php/ijhr" target="_blank" rel="noopener noreferrer">Indonesian Journal of Halal Research</a></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Kontak Resmi */}
+            <div className="col-lg-3 col-md-6 mb-4">
+              <h5 className="heading-menu font-weight-bold mb-3" style={{ color: '#005a36' }}>Kontak Resmi</h5>
+              <ul className="list-unstyled menu-list">
+                <li className="mb-2">
+                  <i className="custom-icon icon-phone mr-2" style={{ color: '#005a36' }}></i>
+                  WA / Call Center: <a href="https://wa.me/6282118201232" target="_blank" rel="noopener noreferrer">+62 821 1820 1232</a>
+                </li>
+                <li className="mb-2">
+                  <i className="custom-icon icon-phone mr-2" style={{ color: '#005a36' }}></i>
+                  Telepon: <a href="tel:0227800525">(022) 7800525</a>
+                </li>
+                <li className="mb-2">
+                  <i className="custom-icon icon-email mr-2" style={{ color: '#005a36' }}></i>
+                  <a href="mailto:halal@uinsgd.ac.id">halal@uinsgd.ac.id</a>
+                </li>
+                <li className="mb-2">
+                  <i className="custom-icon icon-web mr-2" style={{ color: '#005a36' }}></i>
+                  <a href="https://halal.uinsgd.ac.id" target="_blank" rel="noopener noreferrer">halal.uinsgd.ac.id</a>
+                </li>
+                <li className="mt-2 text-muted small">
+                  <strong>Kampus 2:</strong> Jl. Cimencrang, Gede Bage, Bandung 40294<br />
+                  <strong>Kampus 1:</strong> Jl. A.H. Nasution No. 105, Cibiru, Bandung 40614
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div className="copyright">
-        <div className="container-fluid">
-            <span className="copyright-text">© COPYRIGHT LPH UIN SGD 2026. All Right Reserved</span>
+      </div>
+
+      <div className="copyright py-3" style={{ backgroundColor: '#00472a', color: '#e5e7eb' }}>
+        <div className="container-fluid text-center">
+          <span className="copyright-text small">
+            &copy; 2026 Halal Center &amp; Lembaga Pemeriksa Halal (LPH) UIN Sunan Gunung Djati Bandung. All Rights Reserved.
+          </span>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
   );
 };
+
+export default Footer;
