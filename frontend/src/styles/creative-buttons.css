@@ -278,3 +278,527 @@
   margin-top: 0 !important;
   display: block !important;
 }
+
+/* === 4. MODERN SERVICE CARDS & FORMS (CALCULATOR & SATISFACTION SURVEY) === */
+.service-form-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  padding: 32px 36px;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 767px) {
+  .service-form-card {
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+}
+
+.service-card-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.service-card-header .badge-pill-tag {
+  display: inline-block;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: #EBF7EE;
+  color: #005a36;
+  border: 1px solid #C6E9CE;
+  margin-bottom: 10px;
+}
+
+.service-card-header .card-main-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.service-card-header .card-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748B;
+  margin-bottom: 0;
+}
+
+/* Modern Form Controls */
+.modern-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #1E293B;
+  margin-bottom: 8px;
+}
+
+.modern-label .required-dot {
+  color: #EF4444;
+  margin-left: 2px;
+}
+
+.modern-label .label-hint {
+  font-weight: 400;
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+.modern-input,
+.modern-select {
+  width: 100%;
+  height: 48px;
+  padding: 10px 16px;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-size: 14px;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.modern-input:focus,
+.modern-select:focus {
+  border-color: #1874A5;
+  box-shadow: 0 0 0 3px rgba(24, 116, 165, 0.15);
+  background-color: #FAFCFE;
+}
+
+.modern-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-size: 14px;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.modern-textarea:focus {
+  border-color: #1874A5;
+  box-shadow: 0 0 0 3px rgba(24, 116, 165, 0.15);
+  background-color: #FAFCFE;
+}
+
+/* Calculator Table & Summaries */
+.calc-table-container {
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #FFFFFF;
+}
+
+.calc-table-modern {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.calc-table-modern thead th {
+  background: #F8FAFC;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #475569;
+  padding: 14px 18px;
+  border-bottom: 1.5px solid #E2E8F0;
+}
+
+.calc-table-modern tbody td {
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #334155;
+  border-bottom: 1px solid #F1F5F9;
+  vertical-align: middle;
+}
+
+.calc-table-modern tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.calc-total-box {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 1.5px solid #86EFAC;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.savings-pill-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* IKM Rating Card & Buttons */
+.ikm-question-card {
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  transition: all 0.2s ease;
+}
+
+.ikm-question-card:hover {
+  border-color: #CBD5E1;
+  background: #F1F5F9;
+}
+
+.ikm-question-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: #0F172A;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ikm-question-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1874A5;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ikm-rating-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .ikm-rating-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ikm-rating-grid button:last-child {
+    grid-column: span 2;
+  }
+}
+
+.ikm-btn-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: 1.5px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 64px;
+  text-align: center;
+}
+
+.ikm-btn-option .opt-val {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.ikm-btn-option .opt-text {
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.ikm-btn-option:hover {
+  border-color: #1874A5;
+  color: #1874A5;
+  background: #F0F9FF;
+  transform: translateY(-1px);
+}
+
+.ikm-btn-option.is-selected {
+  background: linear-gradient(135deg, #005a36 0%, #217438 100%);
+  border-color: #005a36;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 90, 54, 0.25);
+}
+
+.ikm-btn-option.is-selected .opt-val,
+.ikm-btn-option.is-selected .opt-text {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   ARTICLE & REGULASI FLOATING OVERLAP CARD DESIGN (1:1 TO DESIGN SCREENSHOT)
+   ========================================================================== */
+
+.news-update-section-v2 {
+  background-color: #F8FAFC !important;
+  padding: 80px 0 90px !important;
+  position: relative !important;
+}
+
+.news-badge-outline {
+  display: inline-block !important;
+  border: 1.5px solid #58A738 !important;
+  color: #4B9E2B !important;
+  background: transparent !important;
+  border-radius: 999px !important;
+  padding: 4px 14px !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+}
+
+.news-main-title {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-bottom: 0 !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+}
+
+.news-title-badge-green {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #55A834 !important;
+  color: #FFFFFF !important;
+  padding: 6px 16px !important;
+  border-radius: 8px !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.3px !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+}
+
+.news-title-text {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+
+.news-view-more-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #289ACF !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.news-view-more-link:hover {
+  color: #1874A5 !important;
+  transform: translateX(3px) !important;
+}
+
+.news-view-more-link .arrow {
+  font-size: 16px !important;
+  line-height: 1 !important;
+  transition: transform 0.25s ease !important;
+}
+
+.news-view-more-link:hover .arrow {
+  transform: translateX(3px) !important;
+}
+
+/* Category Filter Tabs */
+.news-tabs-nav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin: 32px 0 40px !important;
+  border: none !important;
+  justify-content: flex-start !important;
+}
+
+.news-tab-btn {
+  padding: 8px 18px !important;
+  border-radius: 50px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #4B5563 !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.news-tab-btn:hover {
+  border-color: #289ACF !important;
+  color: #289ACF !important;
+  background: #F0F9FF !important;
+}
+
+.news-tab-btn.active {
+  background: #289ACF !important;
+  border-color: #289ACF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(40, 154, 207, 0.3) !important;
+}
+
+/* Floating Overlap News Card */
+.news-overlap-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: 30px !important;
+  height: 100% !important;
+}
+
+.news-thumb-box {
+  width: 100% !important;
+  height: 260px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background-color: #E2E8F0 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+  position: relative !important;
+}
+
+.news-thumb-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  transition: transform 0.4s ease !important;
+}
+
+.news-overlap-card:hover .news-thumb-box img {
+  transform: scale(1.05) !important;
+}
+
+.news-content-bubble {
+  position: relative !important;
+  margin-top: -85px !important;
+  width: calc(100% - 36px) !important;
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  padding: 24px 20px 22px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  text-align: center !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 190px !important;
+}
+
+.news-overlap-card:hover .news-content-bubble {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12) !important;
+}
+
+.news-cyan-indicator {
+  width: 36px !important;
+  height: 3.5px !important;
+  background-color: #289ACF !important;
+  border-radius: 2px !important;
+  margin: 0 auto 16px !important;
+}
+
+.news-card-heading {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 12px !important;
+  min-height: 45px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  transition: color 0.2s ease !important;
+}
+
+.news-card-heading:hover {
+  color: #289ACF !important;
+}
+
+.news-card-excerpt {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #6B7280 !important;
+  line-height: 1.5 !important;
+  margin-bottom: 16px !important;
+  min-height: 38px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.news-card-action-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #289ACF !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  margin-top: auto !important;
+}
+
+.news-card-action-link:hover {
+  color: #1874A5 !important;
+  gap: 9px !important;
+}

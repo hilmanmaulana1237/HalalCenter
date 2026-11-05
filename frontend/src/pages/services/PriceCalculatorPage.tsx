@@ -112,25 +112,36 @@ export const PriceCalculatorPage: React.FC = () => {
       </section>
 
       {/* CONTENT SECTION */}
-      <section className="py-5" id="kalkulator">
+      <section className="py-5" id="kalkulator" style={{ backgroundColor: '#F8FAFC' }}>
         <div className="container">
           <div className="row">
             {/* INPUT PANEL */}
             <div className="col-lg-5 mb-4">
-              <div className="card card-custom p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <span className="badge badge-green mr-2">SIMULASI</span>
-                  <h4 className="heading heading-dark heading-medium mb-0">Parameter Usaha</h4>
+              <div className="service-form-card h-100">
+                <div className="service-card-header">
+                  <span className="badge-pill-tag">SIMULASI</span>
+                  <h3 className="card-main-title">Parameter Usaha</h3>
+                  <p className="card-subtitle">
+                    Pilih skema layanan, skala usaha, dan estimasi produk/bahan untuk menghitung simulasi tarif pemeriksaan.
+                  </p>
                 </div>
-                <p className="wysiwyg-text mb-4">
-                  Pilih skema layanan, skala usaha, dan estimasi produk/bahan untuk menghitung simulasi tarif pemeriksaan.
-                </p>
 
                 <div className="form-group mb-3">
-                  <label className="font-weight-bold" htmlFor="svcTypeSelect">Skema Layanan</label>
+                  <label className="modern-label" htmlFor="svcTypeSelect">
+                    <span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                      Skema Layanan
+                    </span>
+                  </label>
                   <select
                     id="svcTypeSelect"
-                    className="form-control"
+                    className="modern-select"
                     value={serviceType}
                     onChange={(e) => setServiceType(e.target.value)}
                   >
@@ -140,10 +151,18 @@ export const PriceCalculatorPage: React.FC = () => {
                 </div>
 
                 <div className="form-group mb-3">
-                  <label className="font-weight-bold" htmlFor="scaleSelect">Skala Usaha</label>
+                  <label className="modern-label" htmlFor="scaleSelect">
+                    <span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                      </svg>
+                      Skala Usaha
+                    </span>
+                  </label>
                   <select
                     id="scaleSelect"
-                    className="form-control"
+                    className="modern-select"
                     value={businessScale}
                     onChange={(e) => setBusinessScale(e.target.value)}
                   >
@@ -156,108 +175,168 @@ export const PriceCalculatorPage: React.FC = () => {
 
                 <div className="row">
                   <div className="col-6 mb-3">
-                    <label className="font-weight-bold" htmlFor="prodInput">Jumlah Produk</label>
+                    <label className="modern-label" htmlFor="prodInput">
+                      <span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
+                          <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                        Jumlah Produk
+                      </span>
+                      <span className="label-hint">Item</span>
+                    </label>
                     <input
                       id="prodInput"
                       type="number"
                       min="1"
                       max="500"
-                      className="form-control"
+                      className="modern-input"
                       value={productCount}
                       onChange={(e) => setProductCount(Math.max(1, parseInt(e.target.value) || 1))}
                     />
                   </div>
                   <div className="col-6 mb-3">
-                    <label className="font-weight-bold" htmlFor="ingrInput">Jumlah Bahan</label>
+                    <label className="modern-label" htmlFor="ingrInput">
+                      <span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
+                          <path d="M10 2v7.31"></path>
+                          <path d="M14 9.3V2"></path>
+                          <path d="M8.5 2h7"></path>
+                          <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                        </svg>
+                        Jumlah Bahan
+                      </span>
+                      <span className="label-hint">Bahan</span>
+                    </label>
                     <input
                       id="ingrInput"
                       type="number"
                       min="1"
                       max="1000"
-                      className="form-control"
+                      className="modern-input"
                       value={ingredientCount}
                       onChange={(e) => setIngredientCount(Math.max(1, parseInt(e.target.value) || 1))}
                     />
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="btn btn-style1 w-100 mt-2"
-                  onClick={() => {
-                    setServiceType('REGULER');
-                    setBusinessScale('MIKRO');
-                    setProductCount(1);
-                    setIngredientCount(5);
-                  }}
-                >
-                  <span>Reset Parameter</span>
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center py-2"
+                    style={{ borderRadius: '10px', fontWeight: 600, fontSize: '13.5px', borderColor: '#CBD5E1', color: '#475569' }}
+                    onClick={() => {
+                      setServiceType('REGULER');
+                      setBusinessScale('MIKRO');
+                      setProductCount(1);
+                      setIngredientCount(5);
+                    }}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                      <path d="M3 3v5h5"></path>
+                    </svg>
+                    Reset Parameter
+                  </button>
+                </div>
+
+                <div className="mt-4 pt-3 border-top text-center">
+                  <span style={{ fontSize: '12.5px', color: '#64748B' }}>
+                    ⚡ Simulasi biaya diperbarui secara otomatis real-time
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* RESULTS PANEL */}
             <div className="col-lg-7 mb-4">
-              <div className="card card-custom p-4" id="calc-summary-card">
-                <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+              <div className="service-form-card h-100" id="calc-summary-card">
+                <div className="service-card-header d-flex flex-column flex-sm-row justify-content-between align-items-sm-start gap-2">
                   <div>
-                    <span className="badge badge-green mr-2">HASIL ESTIMASI</span>
-                    <h4 className="heading heading-dark heading-medium d-inline-block mb-0">Rincian Komparasi Tarif</h4>
+                    <span className="badge-pill-tag">HASIL ESTIMASI</span>
+                    <h3 className="card-main-title">Rincian Komparasi Tarif</h3>
+                    <p className="card-subtitle">
+                      Transparansi simulasi perbandingan tarif resmi BPJPH vs LPH UIN SGD
+                    </p>
                   </div>
                   {result && (
-                    <span className="badge badge-light-green font-weight-bold mt-2 mt-md-0">
-                      Hemat {result.savingsPercent}% di LPH UIN SGD
-                    </span>
+                    <div className="mt-2 mt-sm-0 flex-shrink-0">
+                      <span className="savings-pill-highlight">
+                        ✨ Hemat {result.savingsPercent}% di LPH UIN SGD
+                      </span>
+                    </div>
                   )}
                 </div>
 
                 {loading ? (
                   <div className="text-center py-5">
-                    <div className="spinner-border text-primary" role="status">
+                    <div className="spinner-border text-primary" role="status" style={{ width: '3rem', height: '3rem' }}>
                       <span className="sr-only">Menghitung...</span>
                     </div>
+                    <p className="text-muted mt-3 mb-0" style={{ fontSize: '14px' }}>Menghitung estimasi tarif pemeriksaan...</p>
                   </div>
                 ) : result ? (
                   <>
-                    <div className="table-responsive mb-4">
-                      <table className="table table-striped table-hover mb-0">
-                        <thead className="thead-light">
-                          <tr>
-                            <th>Komponen Pemeriksaan</th>
-                            <th className="text-right">Standar BPJPH</th>
-                            <th className="text-right">Tarif LPH UIN SGD</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {result.breakdown.map((row, idx) => (
-                            <tr key={idx}>
-                              <td>{row.item}</td>
-                              <td className="text-right">{formatRupiah(row.bpjph)}</td>
-                              <td className="text-right font-weight-bold" style={{ color: '#059669' }}>
-                                {formatRupiah(row.lph)}
-                              </td>
+                    <div className="calc-table-container">
+                      <div className="table-responsive">
+                        <table className="calc-table-modern">
+                          <thead>
+                            <tr>
+                              <th>Komponen Pemeriksaan</th>
+                              <th className="text-right" style={{ minWidth: '130px' }}>Standar BPJPH</th>
+                              <th className="text-right" style={{ minWidth: '150px' }}>Tarif LPH UIN SGD</th>
                             </tr>
-                          ))}
-                          <tr className="table-success font-weight-bold" style={{ fontSize: '16px' }}>
-                            <td>Total Estimasi Biaya</td>
-                            <td className="text-right text-muted" style={{ textDecoration: 'line-through' }}>
-                              {formatRupiah(result.totalBpjph)}
-                            </td>
-                            <td className="text-right" style={{ color: '#1874A5', fontSize: '18px' }}>
-                              {formatRupiah(result.totalLph)}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {result.breakdown.map((row, idx) => (
+                              <tr key={idx}>
+                                <td style={{ fontWeight: 500 }}>{row.item}</td>
+                                <td className="text-right text-muted">{formatRupiah(row.bpjph)}</td>
+                                <td className="text-right font-weight-bold" style={{ color: '#059669' }}>
+                                  {formatRupiah(row.lph)}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
 
-                    <div className="alert alert-success mb-4" style={{ backgroundColor: '#ECFDF5', borderColor: '#A7F3D0', color: '#065F46' }}>
-                      <div className="d-flex align-items-center">
-                        <i className="custom-icon icon-verified mr-2"></i>
+                    {/* TOTAL HIGHLIGHT BOX */}
+                    <div className="calc-total-box">
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: '15px', color: '#166534' }}>
+                          Total Estimasi Biaya
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#15803D' }}>
+                          Pemeriksaan &amp; Audit Lapangan
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="mr-3 text-muted" style={{ textDecoration: 'line-through', fontSize: '14px' }}>
+                          {formatRupiah(result.totalBpjph)}
+                        </span>
+                        <span style={{ color: '#005a36', fontSize: '22px', fontWeight: 800 }}>
+                          {formatRupiah(result.totalLph)}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* SAVINGS ALERT BOX */}
+                    <div className="alert mb-4" style={{ backgroundColor: '#ECFDF5', border: '1.5px solid #A7F3D0', borderRadius: '12px', padding: '16px 20px', color: '#065F46' }}>
+                      <div className="d-flex align-items-start">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 flex-shrink-0 mt-1">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
                         <div>
-                          <strong>Estimasi Penghematan: {formatRupiah(result.savingsNominal)} ({result.savingsPercent}%)</strong>
-                          <div style={{ fontSize: '13px' }}>
-                            {result.notes || 'LPH UIN SGD Bandung memberikan efisiensi biaya audit terjangkau dengan standar akreditasi resmi BPJPH.'}
+                          <strong style={{ fontSize: '14.5px', display: 'block', marginBottom: '2px' }}>
+                            Estimasi Penghematan: {formatRupiah(result.savingsNominal)} ({result.savingsPercent}%)
+                          </strong>
+                          <div style={{ fontSize: '13px', lineHeight: '1.5', color: '#047857' }}>
+                            {result.notes || 'Termasuk pemeriksaan kehalalan produk pangan sederhana dan audit lapangan dasar.'}
                           </div>
                         </div>
                       </div>
@@ -266,17 +345,29 @@ export const PriceCalculatorPage: React.FC = () => {
                     <div className="d-flex flex-wrap gap-2 justify-content-end">
                       <button
                         type="button"
-                        className="btn btn-style1 mr-2"
+                        className="btn btn-outline-secondary mr-2 mb-2 d-inline-flex align-items-center"
+                        style={{ borderRadius: '10px', fontWeight: 600, fontSize: '14px', padding: '10px 18px', borderColor: '#CBD5E1', color: '#334155' }}
                         onClick={() => window.print()}
                       >
-                        <span>Cetak Simulasi</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                          <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                        Cetak Simulasi
                       </button>
                       <button
                         type="button"
-                        className="btn btn-style2"
+                        className="btn btn-style2 mb-2 d-inline-flex align-items-center"
+                        style={{ borderRadius: '10px', fontWeight: 600, fontSize: '14px', padding: '10px 22px' }}
                         onClick={handleDownloadPDF}
                       >
-                        <span>Download PDF Estimasi</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="7 10 12 15 17 10"></polyline>
+                          <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download PDF Estimasi
                       </button>
                     </div>
                   </>

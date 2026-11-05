@@ -131,7 +131,7 @@ const UIN_SERVICES = [
 ];
 
 export const HomePage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'artikel' | 'jurnal' | 'umk' | 'fatwa'>('artikel');
+  const [activeTab, setActiveTab] = useState<'artikel' | 'uin_berita' | 'jurnal' | 'umk' | 'fatwa'>('artikel');
   const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
 
   useEffect(() => {
@@ -747,218 +747,434 @@ export const HomePage: React.FC = () => {
           )}
         </section>
 
-        {/* 5. NEWS & UPDATE SECTION (EXACT TEMPLATE MARKUP WITH WORKING TABS) */}
-        <section className="news-update" data-wpr-lazyrender="1" id="news">
+        {/* 5. NEWS & UPDATE SECTION (EXACT 1:1 TO UPLOADED DESIGN SCREENSHOT) */}
+        <section className="news-update-section-v2" data-wpr-lazyrender="1" id="news">
           <div className="container">
-            <div className="news-update-header">
-              <div className="row align-items-center">
-                <div className="col-md-8 mb-2">
-                  <div className="text-left">
-                    <div className="badge badge-green">NEWS &amp; UPDATE</div>
-                    <h2 className="heading heading-dark heading-medium"><em>Baca Artikel &amp; Informasi Halal</em></h2>
-                    <p className="wysiwyg-text">Dapatkan Informasi Terkini, Riset Jurnal, dan Berita Resmi dari Halal Center UIN Sunan Gunung Djati Bandung</p>
-                  </div>
-                </div>
-                <div className="col-md-4 mb-2 text-md-right">
-                  <Link className="btn btn-text" to="/artikel">Lihat Semua <i className="custom-icon icon-arrow-right"></i></Link>
-                </div>
+            <div className="row align-items-center mb-4">
+              <div className="col-lg-8 col-md-8 mb-3 mb-md-0">
+                <div className="news-badge-outline">ARTIKEL &amp; REGULASI</div>
+                <h2 className="news-main-title">
+                  <span className="news-title-badge-green">BACA ARTIKEL</span>
+                  <span className="news-title-text">SEPUTAR HALAL CENTER UIN SGD</span>
+                </h2>
+              </div>
+              <div className="col-lg-4 col-md-4 text-md-right">
+                <Link className="news-view-more-link" to="/artikel">
+                  Lihat Selengkapnya <span className="arrow">&rarr;</span>
+                </Link>
               </div>
             </div>
 
-            <div className="news-update-content">
-              <div className="custom-tabs">
+            {/* Category Filter Tabs */}
+            <div className="news-tabs-nav">
+              <button
+                className={`news-tab-btn ${activeTab === 'artikel' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveTab('artikel')}
+              >
+                Artikel &amp; Regulasi Utama
+              </button>
+              <button
+                className={`news-tab-btn ${activeTab === 'uin_berita' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveTab('uin_berita')}
+              >
+                Berita Halal Center UIN SGD
+              </button>
+              <button
+                className={`news-tab-btn ${activeTab === 'jurnal' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveTab('jurnal')}
+              >
+                Jurnal &amp; Riset (IJHR)
+              </button>
+              <button
+                className={`news-tab-btn ${activeTab === 'umk' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveTab('umk')}
+              >
+                Ruang UMK &amp; SEHATI
+              </button>
+              <button
+                className={`news-tab-btn ${activeTab === 'fatwa' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveTab('fatwa')}
+              >
+                Fatwa &amp; Regulasi BPJPH
+              </button>
+            </div>
+
+            {/* TAB CONTENT */}
+            <div className="news-cards-container">
+              {/* TAB 1: Featured Articles from Screenshot */}
+              {activeTab === 'artikel' && (
                 <div className="row">
-                  <div className="col-md-12">
-                    <ul className="nav nav-tabs mx-auto" id="customTabs" role="tablist">
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${activeTab === 'artikel' ? 'active' : ''}`}
-                          type="button"
-                          onClick={() => setActiveTab('artikel')}
-                        >
-                          Artikel &amp; Berita Halal
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${activeTab === 'jurnal' ? 'active' : ''}`}
-                          type="button"
-                          onClick={() => setActiveTab('jurnal')}
-                        >
-                          Jurnal &amp; Riset Halal
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${activeTab === 'umk' ? 'active' : ''}`}
-                          type="button"
-                          onClick={() => setActiveTab('umk')}
-                        >
-                          Ruang UMK
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${activeTab === 'fatwa' ? 'active' : ''}`}
-                          type="button"
-                          onClick={() => setActiveTab('fatwa')}
-                        >
-                          Fatwa &amp; Regulasi
-                        </button>
-                      </li>
-                    </ul>
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Bahaya Hidrokuinon dalam Kosmetik"
+                          src="/assets/images/news_thumb_1.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Bahaya Hidrokuinon dalam Kosmetik 3
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Hidrokuinon adalah senyawa kimia yang umum digunakan dalam produk pencerah kulit dan memiliki regulasi ketat dalam aspek keamanan &amp; kehalalan...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/1">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
 
-                    <div className="tab-content" id="tabContent">
-                      {/* Tab 1: Artikel & Berita Halal */}
-                      {activeTab === 'artikel' && (
-                        <div className="tab-pane fade show active" role="tabpanel">
-                          <div className="row">
-                            <div className="col-lg-4 mb-4" data-category="berita">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <Link to="/artikel/1">
-                                  <img
-                                    alt="Pelatihan Pendamping PPH dan Rakornas LP3H"
-                                    className="card-img-top wp-post-image entered lazyloaded"
-                                    src="/assets/images/uin_sgd/uin_14.webp"
-                                  />
-                                </Link>
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Berita</a></h5>
-                                  <h3 className="card-title">
-                                    <Link to="/artikel/1">UIN Sunan Gunung Djati Bandung Gelar Pelatihan Pendamping PPH dan Rakornas Halal Center</Link>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Kenali Pentingnya Pengujian Migrasi pada Kemasan Pangan"
+                          src="/assets/images/news_thumb_2.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Kenali Pentingnya Pengujian Migrasi pada Kemasan Pangan
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Pengujian migrasi pada kemasan pangan menjamin zat berbahaya tidak berpindah ke bahan konsumsi sesuai standar keamanan pangan dan syariat halal...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/2">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
 
-                            <div className="col-lg-4 mb-4" data-category="berita">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <Link to="/artikel/2">
-                                  <img
-                                    alt="Fasilitasi Sertifikasi Halal UIN SGD"
-                                    className="card-img-top wp-post-image entered lazyloaded"
-                                    src="/assets/images/uin_sgd/uin_15.webp"
-                                  />
-                                </Link>
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Prestasi &amp; UMK</a></h5>
-                                  <h3 className="card-title">
-                                    <Link to="/artikel/2">Halal Center UIN SGD Fasilitasi Lebih dari 1.000 Sertifikat Halal Gratis bagi Pelaku Usaha Se-Jawa Barat</Link>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-lg-4 mb-4" data-category="article">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <Link to="/artikel/3">
-                                  <img
-                                    alt="Panduan NIB OSS & Halal"
-                                    className="card-img-top wp-post-image entered lazyloaded"
-                                    src="/assets/images/uin_sgd/uin_16.webp"
-                                  />
-                                </Link>
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Panduan</a></h5>
-                                  <h3 className="card-title">
-                                    <Link to="/artikel/3">Panduan Lengkap Pengajuan NIB Melalui OSS dan Syarat Sertifikasi Halal Jalur Self Declare</Link>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Tab 2: Jurnal & Riset Halal */}
-                      {activeTab === 'jurnal' && (
-                        <div className="tab-pane fade show active" role="tabpanel">
-                          <div className="row">
-                            <div className="col-lg-4 mb-4">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <img
-                                  alt="Indonesian Journal of Halal Research"
-                                  className="card-img-top wp-post-image"
-                                  src="/assets/images/Screenshot-2026-09-11-at-15-16-41-Jurnal-Halal-180.pdf-1.png"
-                                />
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Jurnal Ilmiah (IJHR)</a></h5>
-                                  <h3 className="card-title">
-                                    <a href="https://journal.uinsgd.ac.id/index.php/ijhr" rel="noreferrer" target="_blank">
-                                      Indonesian Journal of Halal Research - Vol. 6 No. 2 (SINTA Terakreditasi)
-                                    </a>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-lg-4 mb-4">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <img
-                                  alt="Riset Laboratorium Halal"
-                                  className="card-img-top wp-post-image"
-                                  src="/assets/images/Screenshot-2026-07-17-at-07-01-06-Jurnal-Halal-179.pdf.png"
-                                />
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Riset Laboratorium</a></h5>
-                                  <h3 className="card-title">
-                                    <a href="#">Autentikasi Halal Produk Daging Olahan dengan Metode Real-Time PCR Multi-Plex</a>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Tab 3: Ruang UMK */}
-                      {activeTab === 'umk' && (
-                        <div className="tab-pane fade show active" role="tabpanel">
-                          <div className="row">
-                            <div className="col-lg-4 mb-4">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <img
-                                  alt="Ruang UMK"
-                                  className="card-img-top wp-post-image"
-                                  src="/assets/images/uin_sgd/uin_16.webp"
-                                />
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Klinik Halal UMK</a></h5>
-                                  <h3 className="card-title">
-                                    <a href="#">Klinik Konsultasi Gratis Pembuatan NIB dan Akun SiHalal di Kampus 1 UIN SGD Bandung</a>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Tab 4: Fatwa & Regulasi */}
-                      {activeTab === 'fatwa' && (
-                        <div className="tab-pane fade show active" role="tabpanel">
-                          <div className="row">
-                            <div className="col-lg-4 mb-4">
-                              <div className="card card-news d-flex flex-column h-100">
-                                <img
-                                  alt="Regulasi Halal KMA"
-                                  className="card-img-top wp-post-image"
-                                  src="/assets/images/img_015.jpg"
-                                />
-                                <div className="card-body">
-                                  <h5 className="card-category mb-2"><a href="#">Regulasi &amp; Fatwa</a></h5>
-                                  <h3 className="card-title">
-                                    <a href="#">Keputusan Menteri Agama (KMA) No. 748 Tahun 2021 tentang Jenis Produk yang Wajib Bersertifikat Halal</a>
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Kulik Regulasi! Permenkes No.2 Tahun 2023"
+                          src="/assets/images/news_thumb_3.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Kulik Regulasi! Permenkes No.2 Tahun 2023
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Kupas tuntas standar baku mutu kesehatan lingkungan dan persyaratan pengolahan higienis yang sejalan dengan Sistem Jaminan Produk Halal (SJPH)...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/3">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {/* TAB 2: Berita Halal Center UIN SGD */}
+              {activeTab === 'uin_berita' && (
+                <div className="row">
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Pelatihan Pendamping PPH UIN SGD"
+                          src="/assets/images/uin_sgd/uin_14.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          UIN SGD Bandung Gelar Pelatihan Pendamping PPH dan Rakornas
+                        </h3>
+                        <p className="news-card-excerpt">
+                          LP3H Halal Center UIN SGD konsisten mencetak ribuan pendamping PPH berkompeten untuk mengakselerasi sertifikasi halal UMK se-Indonesia...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/1">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Fasilitasi Sertifikasi Halal Gratis"
+                          src="/assets/images/uin_sgd/uin_15.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Fasilitasi Lebih dari 1.000 Sertifikat Halal Gratis UMK Jawa Barat
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Program kolaborasi Halal Center UIN SGD bersama BPJPH Kemenag RI dalam mendampingi pelaku usaha mikro kecil meraih sertifikat halal resmi...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/2">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Panduan NIB OSS dan Syarat Sertifikasi"
+                          src="/assets/images/uin_sgd/uin_16.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Panduan Lengkap Pengajuan NIB OSS &amp; Syarat Self Declare
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Langkah mudah pembuatan NIB berbasis risiko dan pengisian data bahan baku di portal SiHalal dengan pendampingan LP3H UIN SGD...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/3">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 3: Jurnal & Riset (IJHR) */}
+              {activeTab === 'jurnal' && (
+                <div className="row">
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Indonesian Journal of Halal Research"
+                          src="/assets/images/Screenshot-2026-09-11-at-15-16-41-Jurnal-Halal-180.pdf-1.png"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Indonesian Journal of Halal Research (IJHR) Vol. 6 No. 2
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Publikasi jurnal ilmiah berkala terakreditasi SINTA yang membahas inovasi riset autentikasi halal hayati dan kebijakan halal global...
+                        </p>
+                        <a className="news-card-action-link" href="https://journal.uinsgd.ac.id/index.php/ijhr" target="_blank" rel="noopener noreferrer">
+                          Baca Sekarang <span>&rarr;</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Riset PCR Autentikasi Daging"
+                          src="/assets/images/Screenshot-2026-07-17-at-07-01-06-Jurnal-Halal-179.pdf.png"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Autentikasi Halal Daging Olahan dengan Metode Real-Time PCR
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Riset laboratorium pengujian DNA babi secara kuantitatif untuk melindungi rantai pasok daging olahan industri pangan nasional...
+                        </p>
+                        <a className="news-card-action-link" href="https://journal.uinsgd.ac.id/index.php/ijhr" target="_blank" rel="noopener noreferrer">
+                          Baca Sekarang <span>&rarr;</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Uji Laboratorium Halal Terpadu"
+                          src="/assets/images/uji-laboratorium.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Pengujian Cemaran Alkohol &amp; Deteksi Titik Kritis Bahan
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Metodologi uji gas chromatography (GC-FID) untuk penetapan ambang batas etanol pada perisa, pelarut, dan produk fermentasi...
+                        </p>
+                        <Link className="news-card-action-link" to="/layanan">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 4: Ruang UMK & SEHATI */}
+              {activeTab === 'umk' && (
+                <div className="row">
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Klinik Konsultasi NIB Gratis"
+                          src="/assets/images/uin_sgd/uin_16.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Klinik Konsultasi Gratis Pembuatan NIB &amp; Akun SiHalal
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Layanan konsultasi tatap muka langsung di Kampus 1 UIN Sunan Gunung Djati Bandung membantu UMK melengkapi dokumen halal...
+                        </p>
+                        <Link className="news-card-action-link" to="/kontak">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Pendampingan Halal Gratis"
+                          src="/assets/images/uin_sgd/uin_14.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Pendampingan Halal Gratis (SEHATI) untuk Pelaku Usaha Mikro
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Fasilitasi kuota sertifikasi gratis dari pemerintah melalui verifikasi lapangan oleh Pendamping PPH UIN Sunan Gunung Djati...
+                        </p>
+                        <Link className="news-card-action-link" to="/layanan">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Pelatihan Juleha UMK"
+                          src="/assets/images/uin_sgd/uin_15.webp"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Program Pelatihan Juru Sembelih Halal bagi Komunitas UMK
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Peningkatan kompetensi juru sembelih unggas dan ruminansia kecil guna memastikan rantai pasok daging halal dari hulu ke hilir...
+                        </p>
+                        <Link className="news-card-action-link" to="/layanan">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 5: Fatwa & Regulasi */}
+              {activeTab === 'fatwa' && (
+                <div className="row">
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="KMA No 748 Tahun 2021"
+                          src="/assets/images/img_015.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          KMA No. 748 Tahun 2021 tentang Produk Wajib Bersertifikat
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Daftar klasifikasi jenis produk makanan, minuman, obat, kosmetik, dan barang gunaan yang wajib memiliki sertifikasi halal...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/3">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Fatwa MUI Rekayasa Genetika"
+                          src="/assets/images/img_014.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Fatwa Standar Kehalalan Produk Rekayasa Genetika (GMO)
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Pedoman penetapan kehalalan bahan hasil fermentasi mikroba rekombinan dan bahan bioteknologi pangan modern...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/1">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="news-overlap-card">
+                      <div className="news-thumb-box">
+                        <img
+                          alt="Kewajiban Halal BPJPH"
+                          src="/assets/images/img_013.jpg"
+                        />
+                      </div>
+                      <div className="news-content-bubble">
+                        <div className="news-cyan-indicator"></div>
+                        <h3 className="news-card-heading">
+                          Kewajiban Sertifikasi Halal Bertahap bagi Pelaku Usaha
+                        </h3>
+                        <p className="news-card-excerpt">
+                          Pemberlakuan penahapan kewajiban bersertifikat halal sesuai regulasi UU No. 33 Tahun 2014 dan Perpu No. 2 Tahun 2022...
+                        </p>
+                        <Link className="news-card-action-link" to="/artikel/2">
+                          Baca Sekarang <span>&rarr;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>

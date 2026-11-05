@@ -39,27 +39,40 @@ export const SatisfactionPage: React.FC = () => {
     }
   };
 
-  const renderRatingGroup = (label: string, currentVal: number, setVal: (n: number) => void) => {
+  const renderRatingGroup = (index: number, label: string, currentVal: number, setVal: (n: number) => void) => {
+    const options = [
+      { val: 1, label: 'Sangat Kurang', icon: '1' },
+      { val: 2, label: 'Kurang', icon: '2' },
+      { val: 3, label: 'Cukup', icon: '3' },
+      { val: 4, label: 'Baik', icon: '4' },
+      { val: 5, label: 'Sangat Baik', icon: '5' },
+    ];
+
+    const currentOpt = options.find((o) => o.val === currentVal);
+
     return (
-      <div className="form-group mb-4">
-        <label className="font-weight-bold d-block mb-2">{label}</label>
-        <div className="d-flex flex-wrap gap-2">
-          {[
-            { val: 1, label: '1 - Sangat Kurang' },
-            { val: 2, label: '2 - Kurang' },
-            { val: 3, label: '3 - Cukup' },
-            { val: 4, label: '4 - Baik' },
-            { val: 5, label: '5 - Sangat Baik' },
-          ].map((item) => (
+      <div className="ikm-question-card">
+        <div className="ikm-question-title">
+          <span className="ikm-question-num">{index}</span>
+          <span style={{ flex: 1 }}>{label}</span>
+        </div>
+        <div className="ikm-rating-grid mb-2">
+          {options.map((item) => (
             <button
               key={item.val}
               type="button"
-              className={`btn btn-sm mr-2 mb-2 ${currentVal === item.val ? 'btn-style2' : 'btn-style1'}`}
+              className={`ikm-btn-option ${currentVal === item.val ? 'is-selected' : ''}`}
               onClick={() => setVal(item.val)}
             >
-              <span>{item.label}</span>
+              <span className="opt-val">{item.icon}</span>
+              <span className="opt-text">{item.label}</span>
             </button>
           ))}
+        </div>
+        <div className="d-flex justify-content-end align-items-center mt-2">
+          <span style={{ fontSize: '12px', color: '#005a36', fontWeight: 600 }}>
+            {currentOpt ? `Pilihan: ${currentOpt.val} - ${currentOpt.label}` : ''}
+          </span>
         </div>
       </div>
     );
@@ -116,31 +129,37 @@ export const SatisfactionPage: React.FC = () => {
       </section>
 
       {/* CONTENT SECTION */}
-      <section className="py-5" id="survei">
+      <section className="py-5" id="survei" style={{ backgroundColor: '#F8FAFC' }}>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <div className="card card-custom p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <span className="badge badge-green mr-2">EVALUASI LAYANAN</span>
-                  <h4 className="heading heading-dark heading-medium mb-0">Indeks Kepuasan Masyarakat (IKM)</h4>
+            <div className="col-lg-9 col-xl-8">
+              <div className="service-form-card">
+                <div className="service-card-header text-center">
+                  <span className="badge-pill-tag">EVALUASI LAYANAN</span>
+                  <h2 className="card-main-title" style={{ fontSize: '26px' }}>Indeks Kepuasan Masyarakat (IKM)</h2>
+                  <p className="card-subtitle mx-auto" style={{ maxWidth: '640px' }}>
+                    Survei ini bertujuan untuk mengukur kepuasan pelaku usaha terhadap proses audit, transparansi tarif, dan keramahan petugas LPH UIN SGD Bandung.
+                  </p>
                 </div>
-                <p className="wysiwyg-text mb-4">
-                  Survei ini bertujuan untuk mengukur kepuasan pelaku usaha terhadap proses audit, transparansi tarif, dan keramahan petugas LPH UIN SGD Bandung.
-                </p>
 
                 {submitted ? (
-                  <div className="alert alert-success p-4 text-center" style={{ backgroundColor: '#ECFDF5', borderColor: '#A7F3D0', color: '#065F46' }}>
-                    <div className="mb-2">
-                      <i className="custom-icon icon-verified" style={{ transform: 'scale(1.5)' }}></i>
+                  <div className="alert p-4 text-center my-4" style={{ backgroundColor: '#ECFDF5', border: '1.5px solid #A7F3D0', borderRadius: '14px', color: '#065F46' }}>
+                    <div className="mb-3">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
                     </div>
-                    <h4 className="font-weight-bold mb-2">Terima Kasih atas Partisipasi Anda!</h4>
-                    <p className="mb-3">
-                      Penilaian dan masukan Anda telah tersimpan dengan aman dan akan menjadi bahan evaluasi berkala manajemen LPH UIN SGD Bandung.
+                    <h4 className="font-weight-bold mb-2" style={{ color: '#065F46', fontSize: '20px' }}>
+                      Terima Kasih atas Partisipasi Anda!
+                    </h4>
+                    <p className="mb-4 text-muted" style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                      Penilaian dan masukan Anda telah tersimpan dengan aman dan akan menjadi bahan evaluasi berkala manajemen LPH UIN SGD Bandung demi peningkatan mutu layanan prima.
                     </p>
                     <button
                       type="button"
                       className="btn btn-style2"
+                      style={{ borderRadius: '10px', padding: '10px 24px', fontWeight: 600 }}
                       onClick={() => {
                         setSubmitted(false);
                         setName('');
@@ -153,76 +172,142 @@ export const SatisfactionPage: React.FC = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit}>
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label className="font-weight-bold" htmlFor="custName">Nama Pelaku Usaha / Perusahaan</label>
-                        <input
-                          type="text"
-                          id="custName"
-                          className="form-control"
-                          required
-                          placeholder="PT / CV / Nama Usaha"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                        />
+                    {/* BAGIAN 1: INFORMASI RESPONDEN */}
+                    <div className="mb-4">
+                      <div className="d-flex align-items-center mb-3">
+                        <span className="badge badge-primary mr-2" style={{ backgroundColor: '#E0F2FE', color: '#0369A1', borderRadius: '6px', fontSize: '11px', fontWeight: 700, padding: '3px 8px' }}>
+                          LANGKAH 1
+                        </span>
+                        <h5 className="font-weight-bold mb-0" style={{ fontSize: '15px', color: '#1E293B' }}>
+                          Identitas Pelaku Usaha
+                        </h5>
                       </div>
-                      <div className="col-md-6 mb-3">
-                        <label className="font-weight-bold" htmlFor="custContact">Kontak (HP / Email)</label>
-                        <input
-                          type="text"
-                          id="custContact"
-                          className="form-control"
-                          required
-                          placeholder="0812xxxx"
-                          value={contact}
-                          onChange={(e) => setContact(e.target.value)}
-                        />
+
+                      <div className="row">
+                        <div className="col-md-6 mb-3">
+                          <label className="modern-label" htmlFor="custName">
+                            <span>Nama Pelaku Usaha / Perusahaan <span className="required-dot">*</span></span>
+                          </label>
+                          <input
+                            type="text"
+                            id="custName"
+                            className="modern-input"
+                            required
+                            placeholder="Contoh: PT / CV / Nama Usaha"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </div>
+                        <div className="col-md-6 mb-3">
+                          <label className="modern-label" htmlFor="custContact">
+                            <span>Kontak (HP / WhatsApp / Email) <span className="required-dot">*</span></span>
+                          </label>
+                          <input
+                            type="text"
+                            id="custContact"
+                            className="modern-input"
+                            required
+                            placeholder="Contoh: 0812xxxxxxx"
+                            value={contact}
+                            onChange={(e) => setContact(e.target.value)}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="form-group mb-0">
+                        <label className="modern-label" htmlFor="serviceSel">
+                          <span>Layanan yang Digunakan <span className="required-dot">*</span></span>
+                        </label>
+                        <select
+                          id="serviceSel"
+                          className="modern-select"
+                          value={serviceUsed}
+                          onChange={(e) => setServiceUsed(e.target.value)}
+                        >
+                          <option value="Pemeriksaan Kehalalan Produk Reguler">Pemeriksaan Kehalalan Produk Reguler</option>
+                          <option value="Pendampingan UMK / Sertifikasi Self Declare">Pendampingan UMK / Sertifikasi Self Declare</option>
+                          <option value="Uji Laboratorium Kehalalan Bahan">Uji Laboratorium Kehalalan Bahan</option>
+                          <option value="Pelatihan Penyelia Halal / SJPH">Pelatihan Penyelia Halal / SJPH</option>
+                          <option value="Konsultasi Teknis & Pra-Audit">Konsultasi Teknis &amp; Pra-Audit</option>
+                        </select>
                       </div>
                     </div>
 
-                    <div className="form-group mb-4">
-                      <label className="font-weight-bold" htmlFor="serviceSel">Layanan yang Digunakan</label>
-                      <select
-                        id="serviceSel"
-                        className="form-control"
-                        value={serviceUsed}
-                        onChange={(e) => setServiceUsed(e.target.value)}
+                    <hr className="my-4" style={{ borderColor: '#E2E8F0' }} />
+
+                    {/* BAGIAN 2: PENILAIAN INDIKATOR LAYANAN */}
+                    <div className="mb-4">
+                      <div className="d-flex align-items-center mb-3">
+                        <span className="badge badge-primary mr-2" style={{ backgroundColor: '#E0F2FE', color: '#0369A1', borderRadius: '6px', fontSize: '11px', fontWeight: 700, padding: '3px 8px' }}>
+                          LANGKAH 2
+                        </span>
+                        <h5 className="font-weight-bold mb-0" style={{ fontSize: '15px', color: '#1E293B' }}>
+                          Penilaian 5 Indikator Kepuasan
+                        </h5>
+                      </div>
+                      <p className="text-muted mb-3" style={{ fontSize: '13px' }}>
+                        Pilih skala penilaian dari 1 (Sangat Kurang) hingga 5 (Sangat Baik) pada masing-masing indikator di bawah ini:
+                      </p>
+
+                      {renderRatingGroup(1, 'Kepuasan Menyeluruh (Overall Experience)', rating, setRating)}
+                      {renderRatingGroup(2, 'Kecepatan dan Ketepatan Waktu Pemeriksaan', speedRating, setSpeedRating)}
+                      {renderRatingGroup(3, 'Keramahan & Profesionalitas Auditor Halal', friendlinessRating, setFriendlinessRating)}
+                      {renderRatingGroup(4, 'Kejelasan Informasi Prosedur & Transparansi Biaya', clarityRating, setClarityRating)}
+                      {renderRatingGroup(5, 'Fasilitas Layanan & Responsivitas Admin', facilityRating, setFacilityRating)}
+                    </div>
+
+                    <hr className="my-4" style={{ borderColor: '#E2E8F0' }} />
+
+                    {/* BAGIAN 3: KRITIK & SARAN */}
+                    <div className="mb-4">
+                      <div className="d-flex align-items-center mb-3">
+                        <span className="badge badge-primary mr-2" style={{ backgroundColor: '#E0F2FE', color: '#0369A1', borderRadius: '6px', fontSize: '11px', fontWeight: 700, padding: '3px 8px' }}>
+                          LANGKAH 3
+                        </span>
+                        <h5 className="font-weight-bold mb-0" style={{ fontSize: '15px', color: '#1E293B' }}>
+                          Kritik, Saran, &amp; Apresiasi
+                        </h5>
+                      </div>
+
+                      <div className="form-group mb-0">
+                        <label className="modern-label" htmlFor="commentArea">
+                          <span>Masukan untuk Peningkatan Mutu Layanan</span>
+                          <span className="label-hint">Opsional</span>
+                        </label>
+                        <textarea
+                          id="commentArea"
+                          className="modern-textarea"
+                          rows={4}
+                          placeholder="Berikan saran konstruktif untuk peningkatan layanan kami ke depan..."
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                        ></textarea>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="btn btn-style2 w-100 d-flex align-items-center justify-content-center py-3"
+                        style={{ borderRadius: '10px', fontSize: '15px', fontWeight: 600, letterSpacing: '0.2px' }}
                       >
-                        <option value="Pemeriksaan Kehalalan Produk Reguler">Pemeriksaan Kehalalan Produk Reguler</option>
-                        <option value="Pendampingan UMK / Sertifikasi Self Declare">Pendampingan UMK / Sertifikasi Self Declare</option>
-                        <option value="Uji Laboratorium Kehalalan Bahan">Uji Laboratorium Kehalalan Bahan</option>
-                        <option value="Pelatihan Penyelia Halal / SJPH">Pelatihan Penyelia Halal / SJPH</option>
-                        <option value="Konsultasi Teknis & Pra-Audit">Konsultasi Teknis &amp; Pra-Audit</option>
-                      </select>
+                        {loading ? (
+                          <>
+                            <div className="spinner-border spinner-border-sm text-light mr-2" role="status"></div>
+                            <span>Mengirim Penilaian...</span>
+                          </>
+                        ) : (
+                          <>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                              <line x1="22" y1="2" x2="11" y2="13"></line>
+                              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            <span>Kirim Penilaian Kepuasan</span>
+                          </>
+                        )}
+                      </button>
                     </div>
-
-                    <hr className="my-4" />
-
-                    {renderRatingGroup('1. Kepuasan Menyeluruh (Overall Experience)', rating, setRating)}
-                    {renderRatingGroup('2. Kecepatan dan Ketepatan Waktu Pemeriksaan', speedRating, setSpeedRating)}
-                    {renderRatingGroup('3. Keramahan & Profesionalitas Auditor Halal', friendlinessRating, setFriendlinessRating)}
-                    {renderRatingGroup('4. Kejelasan Informasi Prosedur & Transparansi Biaya', clarityRating, setClarityRating)}
-                    {renderRatingGroup('5. Fasilitas Layanan & Responsivitas Admin', facilityRating, setFacilityRating)}
-
-                    <div className="form-group mb-4">
-                      <label className="font-weight-bold" htmlFor="commentArea">Kritik, Saran, &amp; Apresiasi</label>
-                      <textarea
-                        id="commentArea"
-                        className="form-control"
-                        rows={3}
-                        placeholder="Berikan saran konstruktif untuk peningkatan layanan kami ke depan..."
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="btn btn-style2 w-100"
-                    >
-                      <span>{loading ? 'Mengirim...' : 'Kirim Penilaian Kepuasan'}</span>
-                    </button>
                   </form>
                 )}
               </div>
