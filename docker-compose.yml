@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - PORT=5000
+      - DATABASE_URL=postgresql://lph_user:lph_secret@postgres:5432/lph_db?schema=public
+      - JWT_SECRET=super_secret_jwt_key_halal_center_uin_sgd_2026_secure
+      - FRONTEND_URL=http://localhost
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=lph_user
+      - POSTGRES_PASSWORD=lph_secret
+      - POSTGRES_DB=lph_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
+

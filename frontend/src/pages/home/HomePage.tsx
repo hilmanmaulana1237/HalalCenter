@@ -653,41 +653,43 @@ export const HomePage: React.FC = () => {
               className="modal fade show"
               id="modalDirector"
               role="dialog"
-              style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.6)', zIndex: 1050 }}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setSelectedDirector(null);
+              }}
             >
               <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content" style={{ overflow: 'hidden', borderRadius: '20px' }}>
-                  <div className="modal-body">
-                    <button
-                      aria-label="Close"
-                      className="close"
-                      type="button"
-                      onClick={() => setSelectedDirector(null)}
-                    >
-                      <svg fill="none" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M20.4246 10.4258C20.7422 10.1084 21.2565 10.1083 21.574 10.4258C21.8915 10.7433 21.8915 11.2577 21.574 11.5753L17.1492 16.0001L21.574 20.4249C21.8915 20.7424 21.8915 21.2568 21.574 21.5743C21.2565 21.8918 20.7422 21.8917 20.4246 21.5743L15.9998 17.1495L11.575 21.5743C11.2575 21.8917 10.7431 21.8918 10.4256 21.5743C10.1081 21.2568 10.1082 20.7424 10.4256 20.4249L14.8504 16.0001L10.4256 11.5753C10.1082 11.2577 10.1081 10.7433 10.4256 10.4258C10.7431 10.1083 11.2575 10.1084 11.575 10.4258L15.9998 14.8506L20.4246 10.4258Z"
-                          fill="#6B7280"
-                        ></path>
-                      </svg>
-                    </button>
-                    <div className="modal-body-wrap">
-                      <div className="modal-body-left">
-                        <img
-                          alt={selectedDirector.name}
-                          className="img-fluid"
-                          id="director-img"
-                          src={selectedDirector.image}
-                        />
-                      </div>
-                      <div className="modal-body-right">
-                        <div className="intro">
-                          <p className="position" id="director-position">{selectedDirector.position}</p>
-                          <h3 className="name" id="director-name">{selectedDirector.name}</h3>
-                          {selectedDirector.quote && (
-                            <p className="mt-2 text-muted" style={{ fontStyle: 'italic', fontSize: '13px', lineHeight: '1.6' }}>
-                              "{selectedDirector.quote}"
-                            </p>
+                  <div className="modal-content">
+                    <div className="modal-body">
+                      <button
+                        aria-label="Close"
+                        className="close"
+                        type="button"
+                        onClick={() => setSelectedDirector(null)}
+                      >
+                          <svg fill="none" height="24" viewBox="0 0 32 32" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M20.4246 10.4258C20.7422 10.1084 21.2565 10.1083 21.574 10.4258C21.8915 10.7433 21.8915 11.2577 21.574 11.5753L17.1492 16.0001L21.574 20.4249C21.8915 20.7424 21.8915 21.2568 21.574 21.5743C21.2565 21.8918 20.7422 21.8917 20.4246 21.5743L15.9998 17.1495L11.575 21.5743C11.2575 21.8917 10.7431 21.8918 10.4256 21.5743C10.1081 21.2568 10.1082 20.7424 10.4256 20.4249L14.8504 16.0001L10.4256 11.5753C10.1082 11.2577 10.1081 10.7433 10.4256 10.4258C10.7431 10.1083 11.2575 10.1084 11.575 10.4258L15.9998 14.8506L20.4246 10.4258Z"
+                              fill="#4B5563"
+                            ></path>
+                          </svg>
+                      </button>
+                      <div className="modal-body-wrap">
+                        <div className="modal-body-left">
+                          <img
+                            alt={selectedDirector.name}
+                            className="img-fluid"
+                            id="director-img"
+                            src={selectedDirector.image}
+                          />
+                        </div>
+                        <div className="modal-body-right">
+                          <div className="intro">
+                            <p className="position" id="director-position">{selectedDirector.position}</p>
+                            <h3 className="name" id="director-name">{selectedDirector.name}</h3>
+                            {selectedDirector.quote && (
+                                <div className="quote-card">
+                                  "{selectedDirector.quote}"
+                            </div>
                           )}
                         </div>
                         <div className="item-list education">
