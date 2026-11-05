@@ -1,0 +1,98 @@
+/* ==========================================================================
+   PALET WARNA RESMI LPH UIN SGD (SESUAI SECTION 6 BLUEPRINT.MD)
+   - Warna Utama (Primary): rgb(39, 35, 83) = #272353
+   - Pendamping: Hijau Emerald (Halal), Amber/Emas, Teal/Sky, Oranye/Koral CTA
+   - Mempertahankan dan memetakan variabel CSS asli template secara presisi
+   ========================================================================== */
+
+:root {
+  /* Primary Tint & Shade (#272353) */
+  --color-primary-50: #EEEDF7;
+  --color-primary-100: #D4D2ED;
+  --color-primary-200: #A9A6DB;
+  --color-primary-300: #7E79CA;
+  --color-primary-400: #544D9A;
+  --color-primary-500: #3B3578;
+  --color-primary-600: #272353; /* MAIN PRIMARY */
+  --color-primary-700: #1E1A42;
+  --color-primary-800: #151230;
+  --color-primary-900: #0C0B1F;
+
+  /* Secondary / Halal Emerald Palette */
+  --color-secondary-50: #ECFDF5;
+  --color-secondary-100: #D1FAE5;
+  --color-secondary-200: #A7F3D0;
+  --color-secondary-300: #6EE7B7;
+  --color-secondary-400: #10B981;
+  --color-secondary-500: #059669; /* HALAL EMERALD GREEN */
+  --color-secondary-600: #047857;
+
+  /* Accent Colors (Ramai, Hidup, Tidak Monoton) */
+  --color-accent-amber: #F59E0B;
+  --color-accent-amber-light: #FEF3C7;
+  --color-accent-teal: #0EA5E9;
+  --color-accent-teal-light: #E0F2FE;
+  --color-accent-coral: #F97316; /* CTA Primary */
+  --color-accent-coral-hover: #EA580C;
+
+  /* Text Roles */
+  --color-text-primary: #272353;
+  --color-text-secondary: #059669;
+  --color-text-dark-primary: #111827;
+  --color-text-light-primary: #FFFFFF;
+  --color-text-dark-secondary: #4B5563;
+  --color-text-dark-tertiary: #6B7280;
+  --color-text-black: #000000;
+  --color-text-disabled: #9CA3AF;
+  --color-text-neutral-primary: #0A0A0A;
+
+  /* Background Roles */
+  --color-bg-light: #FFFFFF;
+  --color-bg-table-header: rgba(39, 35, 83, 0.05);
+  --color-bg-surface-primary: #F8F7FF;
+  --color-bg-surface-neutral-light: #F9FAFB;
+  --color-bg-surface-neutral-dark: #F3F4F6;
+  
+  /* Gradients */
+  --color-bg-fill-primary: linear-gradient(135deg, #272353 0%, #3B3578 50%, #059669 100%);
+  --linear-blur: linear-gradient(180deg, #272353 0%, #3B3578 100%);
+  --linear-green: linear-gradient(270deg, #059669 0%, #10B981 100%);
+
+  /* Borders & Icons */
+  --color-border-fill-primary: #272353;
+  --color-border-fill-secondary: #059669;
+  --color-border-neutral-light: rgba(39, 35, 83, 0.1);
+  --color-border-neutral-dark: rgba(39, 35, 83, 0.15);
+  --color-icon-primary: #272353;
+
+  /* CTA Button Specific overrides */
+  --color-cta-bg: #F97316;
+  --color-cta-text: #FFFFFF;
+  --color-cta-hover: #EA580C;
+}
+
+/* Custom override for buttons to feel lively yet elegant */
+.btn-style1 {
+  background: var(--color-bg-fill-primary) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.btn-style2 {
+  background-color: var(--color-accent-coral) !important;
+  border-color: var(--color-accent-coral) !important;
+  color: #ffffff !important;
+}
+
+.btn-style2:hover {
+  background-color: var(--color-accent-coral-hover) !important;
+  border-color: var(--color-accent-coral-hover) !important;
+  color: #ffffff !important;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: var(--color-primary-600) !important;
+  font-weight: 600;
+}
+

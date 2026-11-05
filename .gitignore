@@ -1,0 +1,8 @@
+# Ignored directories
+backend/
+TemplateDesain/
+node_modules/
+dist/
+*.log
+.env
+dev.db
