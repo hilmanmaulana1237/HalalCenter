@@ -41,11 +41,11 @@ export const SatisfactionPage: React.FC = () => {
 
   const renderRatingGroup = (index: number, label: string, currentVal: number, setVal: (n: number) => void) => {
     const options = [
-      { val: 1, label: 'Sangat Kurang', icon: '1' },
-      { val: 2, label: 'Kurang', icon: '2' },
-      { val: 3, label: 'Cukup', icon: '3' },
-      { val: 4, label: 'Baik', icon: '4' },
-      { val: 5, label: 'Sangat Baik', icon: '5' },
+      { val: 1, label: 'Sangat Kurang', short: 'S.Kurang' },
+      { val: 2, label: 'Kurang', short: 'Kurang' },
+      { val: 3, label: 'Cukup', short: 'Cukup' },
+      { val: 4, label: 'Baik', short: 'Baik' },
+      { val: 5, label: 'Sangat Baik', short: 'S.Baik' },
     ];
 
     const currentOpt = options.find((o) => o.val === currentVal);
@@ -64,15 +64,19 @@ export const SatisfactionPage: React.FC = () => {
               className={`ikm-btn-option ${currentVal === item.val ? 'is-selected' : ''}`}
               onClick={() => setVal(item.val)}
             >
-              <span className="opt-val">{item.icon}</span>
-              <span className="opt-text">{item.label}</span>
+              <span className="opt-val">{item.val}</span>
+              <span className="opt-text d-none d-sm-inline">{item.label}</span>
+              <span className="opt-text d-inline d-sm-none">{item.short}</span>
             </button>
           ))}
         </div>
-        <div className="d-flex justify-content-end align-items-center mt-2">
-          <span style={{ fontSize: '12px', color: '#005a36', fontWeight: 600 }}>
-            {currentOpt ? `Pilihan: ${currentOpt.val} - ${currentOpt.label}` : ''}
-          </span>
+        <div className="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-1">
+          <span className="text-muted" style={{ fontSize: '11px' }}>Skala 1 (Rendah) - 5 (Tinggi)</span>
+          {currentOpt && (
+            <span className="ikm-badge-selected">
+              Pilihan: {currentOpt.val} - {currentOpt.label}
+            </span>
+          )}
         </div>
       </div>
     );

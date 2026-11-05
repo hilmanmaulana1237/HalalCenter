@@ -22,3 +22,26 @@ body {
 .modal-backdrop {
   z-index: 1040;
 }
+
+/* Android Mobile Optimization Safeguard (Does NOT affect desktop >= 768px) */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .heading-medium {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+  .heading-large {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+  }
+  .hero-banner-heading {
+    font-size: 26px !important;
+  }
+}

@@ -102,37 +102,84 @@ export const AnnouncementDetailPage: React.FC = () => {
       </section>
 
       {/* CONTENT */}
-      <section className="py-5">
+      <section className="announcement-section-theme">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-9">
-              <div className="card card-custom p-4 p-md-5">
-                <div className="d-flex align-items-center mb-4">
-                  <span className="badge badge-green mr-2">PENGUMUMAN RESMI</span>
-                  <span className="badge badge-light-green">{formatDate(announcement.publishedAt)}</span>
+            <div className="col-lg-10">
+              <div
+                className="bg-white p-4 p-md-5 shadow-sm"
+                style={{
+                  borderRadius: '20px',
+                  border: '1.5px solid #E2E8F0',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+                }}
+              >
+                <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4 pb-3 border-bottom">
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="chip-priority" style={{ background: '#EBF8EE', color: '#166534', borderColor: '#BBF7D0' }}>
+                      PENGUMUMAN RESMI
+                    </span>
+                    <span className="chip-date-green">{formatDate(announcement.publishedAt)}</span>
+                  </div>
+                  <Link to="/pengumuman" className="announcement-action-btn" style={{ fontSize: '13px' }}>
+                    &larr; Kembali ke Daftar
+                  </Link>
                 </div>
+
+                <h2
+                  style={{
+                    fontFamily: "var(--font-family-montserrat, 'Montserrat', sans-serif)",
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    lineHeight: '1.4',
+                    color: '#111827',
+                    marginBottom: '24px',
+                  }}
+                >
+                  {announcement.title}
+                </h2>
 
                 <div
                   className="wysiwyg-text mb-4"
-                  style={{ fontSize: '16px', lineHeight: '1.8', color: '#1F2937' }}
-                >
-                  <p style={{ whiteSpace: 'pre-line' }}>{announcement.content}</p>
-                </div>
+                  style={{ fontSize: '15.5px', lineHeight: '1.8', color: '#334155' }}
+                  dangerouslySetInnerHTML={{ __html: announcement.content }}
+                />
 
                 {announcement.attachmentUrl && (
-                  <div className="p-4 rounded border bg-light mt-4">
-                    <h5 className="font-weight-bold mb-2">Dokumen Lampiran Resmi</h5>
-                    <p className="text-muted mb-3" style={{ fontSize: '14px' }}>
-                      Silakan unduh dokumen surat keputusan / edaran resmi berikut:
-                    </p>
-                    <a
-                      href={announcement.attachmentUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-style2"
-                    >
-                      <span>Unduh Dokumen PDF</span>
-                    </a>
+                  <div
+                    className="p-4 rounded mt-4"
+                    style={{
+                      background: '#F8FAFC',
+                      border: '1.5px solid #E2E8F0',
+                      borderRadius: '14px',
+                    }}
+                  >
+                    <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                      <div>
+                        <h5
+                          style={{
+                            fontFamily: "var(--font-family-montserrat, 'Montserrat', sans-serif)",
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            color: '#111827',
+                            marginBottom: '4px',
+                          }}
+                        >
+                          📄 Dokumen Lampiran Resmi
+                        </h5>
+                        <p className="text-muted mb-0" style={{ fontSize: '13.5px' }}>
+                          Silakan unduh dokumen surat edaran / petunjuk teknis resmi dalam format PDF.
+                        </p>
+                      </div>
+                      <a
+                        href={announcement.attachmentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-style1"
+                      >
+                        <span>Unduh Dokumen PDF</span>
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>

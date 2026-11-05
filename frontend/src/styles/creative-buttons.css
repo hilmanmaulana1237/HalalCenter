@@ -510,12 +510,49 @@
   gap: 8px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .ikm-rating-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 4px !important;
   }
-  .ikm-rating-grid button:last-child {
-    grid-column: span 2;
+  .ikm-btn-option {
+    min-height: 54px !important;
+    padding: 6px 2px !important;
+    border-radius: 8px !important;
+  }
+  .ikm-btn-option .opt-val {
+    font-size: 15px !important;
+    margin-bottom: 2px !important;
+  }
+  .ikm-btn-option .opt-text {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.2px !important;
+  }
+  .service-form-card {
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+  }
+  .service-card-header {
+    margin-bottom: 18px !important;
+    padding-bottom: 14px !important;
+  }
+  .service-card-header .card-main-title {
+    font-size: 19px !important;
+  }
+  .service-card-header .card-subtitle {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+  .ikm-question-card {
+    padding: 14px 12px !important;
+    margin-bottom: 14px !important;
+    border-radius: 10px !important;
+  }
+  .ikm-question-title {
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 10px !important;
   }
 }
 
@@ -565,6 +602,93 @@
 .ikm-btn-option.is-selected .opt-val,
 .ikm-btn-option.is-selected .opt-text {
   color: #FFFFFF;
+}
+
+.ikm-badge-selected {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* Mobile Calculator Specifics (Android) */
+.calc-mobile-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.calc-mobile-card-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #1E293B;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.calc-mobile-card-rates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-mobile-card-rates .rate-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-mobile-card-rates .rate-lbl {
+  font-size: 11px;
+  color: #64748B;
+  margin-bottom: 2px;
+}
+
+.calc-mobile-card-rates .rate-val.bpjph {
+  color: #64748B;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.calc-mobile-card-rates .rate-val.lph {
+  color: #059669;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 576px) {
+  .calc-total-box {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 14px 16px !important;
+    gap: 8px !important;
+  }
+  .calc-total-box .calc-total-prices {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px dashed #86EFAC !important;
+    padding-top: 8px !important;
+    margin-top: 4px !important;
+    text-align: left !important;
+  }
+  .calc-actions-wrap {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .calc-actions-wrap .btn {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 10px !important;
+  }
 }
 
 /* ==========================================================================
@@ -801,4 +925,226 @@
 .news-card-action-link:hover {
   color: #1874A5 !important;
   gap: 9px !important;
+}
+
+/* ==========================================================================
+   ANNOUNCEMENT PAGE THEME COMPONENTS (PENGUMUMAN & ARSIP RESMI)
+   ========================================================================== */
+
+.announcement-section-theme {
+  background-color: #F8FAFC !important;
+  padding: 70px 0 90px !important;
+  position: relative !important;
+}
+
+/* Featured / Pinned Announcement Card */
+.announcement-featured-card {
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  border: 1.5px solid rgba(88, 167, 56, 0.35) !important;
+  border-left: 6px solid #55A834 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+  padding: 32px 36px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.announcement-featured-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 40px rgba(88, 167, 56, 0.12) !important;
+  border-color: #55A834 !important;
+}
+
+.announcement-meta-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+}
+
+.chip-date-green {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #F0FDF4 !important;
+  color: #166534 !important;
+  border: 1px solid #DCFCE7 !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+}
+
+.chip-priority {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  border: 1px solid #FEE2E2 !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+}
+
+.chip-pdf {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #FFFBEB !important;
+  color: #B45309 !important;
+  border: 1px solid #FDE68A !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+}
+
+.announcement-featured-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #111827 !important;
+  margin-bottom: 12px !important;
+}
+
+.announcement-featured-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.announcement-featured-title a:hover {
+  color: #1874A5 !important;
+}
+
+.announcement-featured-desc {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 14.5px !important;
+  color: #4B5563 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 24px !important;
+}
+
+.announcement-featured-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #F1F5F9 !important;
+}
+
+/* Regular Announcement Card */
+.announcement-item-card {
+  background: #FFFFFF !important;
+  border-radius: 18px !important;
+  border: 1.5px solid #E2E8F0 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04) !important;
+  padding: 26px 24px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: all 0.3s ease !important;
+}
+
+.announcement-item-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #289ACF !important;
+  box-shadow: 0 16px 36px rgba(40, 154, 207, 0.12) !important;
+}
+
+.announcement-item-title {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #111827 !important;
+  margin-top: 14px !important;
+  margin-bottom: 10px !important;
+  min-height: 48px !important;
+}
+
+.announcement-item-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.announcement-item-card:hover .announcement-item-title a {
+  color: #1874A5 !important;
+}
+
+.announcement-item-desc {
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
+  color: #64748B !important;
+  line-height: 1.55 !important;
+  margin-bottom: 20px !important;
+  flex-grow: 1 !important;
+}
+
+.announcement-item-footer {
+  padding-top: 14px !important;
+  border-top: 1px solid #F1F5F9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.announcement-action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: var(--font-family-montserrat, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #289ACF !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.announcement-action-btn:hover {
+  color: #1874A5 !important;
+  gap: 9px !important;
+}
+
+/* Android / Mobile Optimizations for News & Overlap Cards */
+@media (max-width: 767px) {
+  .news-tabs-nav {
+    gap: 6px !important;
+    margin: 16px 0 24px !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .news-tab-btn {
+    flex-shrink: 0 !important;
+    font-size: 12px !important;
+    padding: 6px 14px !important;
+    white-space: nowrap !important;
+  }
+  .news-thumb-box {
+    height: 200px !important;
+  }
+  .news-content-bubble {
+    margin-top: -50px !important;
+    width: calc(100% - 20px) !important;
+    padding: 18px 16px 16px !important;
+    min-height: 170px !important;
+  }
 }

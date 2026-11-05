@@ -126,9 +126,9 @@ export const NewsListPage: React.FC = () => {
             <div className="d-flex gap-2 flex-wrap mt-3">
               {[
                 { id: 'ALL', label: 'Semua Warta' },
-                { id: 'AGENDA', label: '📅 Agenda Kegiatan' },
-                { id: 'ACARA', label: '🎉 Acara & Workshop' },
-                { id: 'KEGIATAN', label: '🏢 Kegiatan Audit LPH' },
+                { id: 'AGENDA', label: 'Agenda Kegiatan' },
+                { id: 'ACARA', label: 'Acara & Workshop' },
+                { id: 'KEGIATAN', label: 'Kegiatan Audit LPH' },
               ].map((tab) => (
                 <button
                   key={tab.id}

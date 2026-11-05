@@ -174,7 +174,7 @@ export const PriceCalculatorPage: React.FC = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-6 mb-3">
+                  <div className="col-12 col-sm-6 mb-3">
                     <label className="modern-label" htmlFor="prodInput">
                       <span>
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
@@ -197,7 +197,7 @@ export const PriceCalculatorPage: React.FC = () => {
                       onChange={(e) => setProductCount(Math.max(1, parseInt(e.target.value) || 1))}
                     />
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-12 col-sm-6 mb-3">
                     <label className="modern-label" htmlFor="ingrInput">
                       <span>
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1874A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 d-inline-block align-text-bottom">
@@ -279,7 +279,8 @@ export const PriceCalculatorPage: React.FC = () => {
                   </div>
                 ) : result ? (
                   <>
-                    <div className="calc-table-container">
+                    {/* DESKTOP TABLE VIEW (>= 576px) */}
+                    <div className="calc-table-container d-none d-sm-block">
                       <div className="table-responsive">
                         <table className="calc-table-modern">
                           <thead>
@@ -304,6 +305,25 @@ export const PriceCalculatorPage: React.FC = () => {
                       </div>
                     </div>
 
+                    {/* MOBILE CARD VIEW (< 576px) - Android Optimized */}
+                    <div className="d-block d-sm-none mb-3">
+                      {result.breakdown.map((row, idx) => (
+                        <div key={idx} className="calc-mobile-card">
+                          <div className="calc-mobile-card-title">{row.item}</div>
+                          <div className="calc-mobile-card-rates">
+                            <div className="rate-item">
+                              <span className="rate-lbl">Standar BPJPH:</span>
+                              <span className="rate-val bpjph">{formatRupiah(row.bpjph)}</span>
+                            </div>
+                            <div className="rate-item text-right">
+                              <span className="rate-lbl">Tarif LPH UIN SGD:</span>
+                              <span className="rate-val lph">{formatRupiah(row.lph)}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
                     {/* TOTAL HIGHLIGHT BOX */}
                     <div className="calc-total-box">
                       <div>
@@ -314,7 +334,7 @@ export const PriceCalculatorPage: React.FC = () => {
                           Pemeriksaan &amp; Audit Lapangan
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="calc-total-prices text-right">
                         <span className="mr-3 text-muted" style={{ textDecoration: 'line-through', fontSize: '14px' }}>
                           {formatRupiah(result.totalBpjph)}
                         </span>
@@ -342,10 +362,10 @@ export const PriceCalculatorPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="d-flex flex-wrap gap-2 justify-content-end">
+                    <div className="calc-actions-wrap d-flex flex-wrap gap-2 justify-content-end">
                       <button
                         type="button"
-                        className="btn btn-outline-secondary mr-2 mb-2 d-inline-flex align-items-center"
+                        className="btn btn-outline-secondary mr-sm-2 mb-2 d-inline-flex align-items-center justify-content-center"
                         style={{ borderRadius: '10px', fontWeight: 600, fontSize: '14px', padding: '10px 18px', borderColor: '#CBD5E1', color: '#334155' }}
                         onClick={() => window.print()}
                       >
@@ -358,7 +378,7 @@ export const PriceCalculatorPage: React.FC = () => {
                       </button>
                       <button
                         type="button"
-                        className="btn btn-style2 mb-2 d-inline-flex align-items-center"
+                        className="btn btn-style2 mb-2 d-inline-flex align-items-center justify-content-center"
                         style={{ borderRadius: '10px', fontWeight: 600, fontSize: '14px', padding: '10px 22px' }}
                         onClick={handleDownloadPDF}
                       >

@@ -14,7 +14,7 @@ interface Director {
   experience: string[];
 }
 
-const DIRECTORS: Director[] = [
+export const DIRECTORS: Director[] = [
   {
     id: 1,
     name: 'Prof. Dr. H. Rosihon Anwar, M.Ag.',
@@ -603,38 +603,6 @@ export const HomePage: React.FC = () => {
                     <p className="text-muted mt-2">Komitmen Pengabdian, Tata Kelola Profesional, dan Standar Mutu Laboratorium</p>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="board-of-director-content">
-              <div className="row justify-content-center">
-                {DIRECTORS.map((director) => (
-                  <div className="col-lg-4 col-md-6 mb-4" key={director.id}>
-                    <div className="box-director">
-                      <img
-                        alt={director.name}
-                        className="img-fluid box-director-img entered lazyloaded"
-                        src={director.image}
-                        style={{ objectFit: 'contain', width: '100%', height: '100%', maxHeight: '420px', padding: '10px 0' }}
-                      />
-                      <div className="box-director-flip">
-                        <div className="box-director-flip-front">
-                          <p className="position">{director.position}</p>
-                          <h4 className="name">{director.name}</h4>
-                        </div>
-                        <div className="box-director-flip-back">
-                          <button
-                            className="btn btn-text btn-show-detail"
-                            type="button"
-                            onClick={() => setSelectedDirector(director)}
-                          >
-                            Lihat Detail <i className="custom-icon icon-arrow-right"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
 
